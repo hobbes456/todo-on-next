@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Head from "next/head";
 
 import AppLoader from "@/components/common/AppLoader";
+import Information from "@/components/common/Information";
 
 import s from "@/styles/HomePage.module.scss";
 
@@ -25,7 +26,9 @@ const HomePage = () => {
             </Head>
             {isLoading ? 
                 <AppLoader/> :
-                <></>}
+                <div className={s.main}>
+                    <Information/>
+                </div>}
         </>
     );
 }
