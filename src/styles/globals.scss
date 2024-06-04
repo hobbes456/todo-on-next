@@ -1,0 +1,36 @@
+@import "./css-reset";
+@import "./variables";
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: $main;
+
+    transition: background-color 1000ms ease-in-out;
+
+    &.ufo-active {
+        background-color: $ufo_bg_color;
+
+        filter: drop-shadow(0 0 10px $white);
+    }
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+input {    
+    outline: none;
+    border: none;
+    background: inherit;
+    
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
