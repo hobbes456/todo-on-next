@@ -1,15 +1,13 @@
 import Link from "next/link";
 
+import Header from "@/components/common/Header";
 import { buttonsContent } from "@/constants/buttonsContent";
 
 import s from "./Todo.module.scss";
 
 const Todo = () => {
     return (<div className={s.todo}>
-        <div className={s.todo__header}>
-            <h1 className={s.todo__title}>todos</h1>
-            <input className={s.todo__input} type="text" placeholder="What needs to be done?" autoFocus=""/>
-        </div>
+        <Header />
         <div className={s.todo__content}>
             <input id="toggleAll" type="checkbox" />
             <label className={s.todo__toggleAll} htmlFor="toggleAll"/>

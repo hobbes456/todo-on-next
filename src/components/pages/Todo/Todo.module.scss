@@ -12,33 +12,6 @@
     background-color: $white;
     border-radius: 20px;
 
-    
-    &__header {
-        @include flex_column_center;
-        width: 100%;
-    }
-    
-    &__title {
-        @include h1-font;
-        color: $main;
-
-        transition: color 600ms ease-in-out;
-    }
-
-    &__input {
-        position: relative;
-
-        align-self: stretch;
-        padding: 16px 16px 16px 60px;
-
-        @include p-big-font;
-        color: $grey_1;
-
-        &::placeholder {
-            font-style: italic;
-        }
-    }
-
     &__content {
         display: flex;
         width: 100%;
