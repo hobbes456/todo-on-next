@@ -1,0 +1,44 @@
+@import "@/styles/_variables.scss";
+@import "@/styles/_mixins.scss";
+
+.footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding: 15px 0;
+    
+    @include p-normal-font;
+    
+    border-top: 1px solid $main;
+    
+    &_show {
+        display: flex;
+    }
+    
+    &__buttons {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        @include _550 {
+            gap: 5px;
+        }
+    }
+
+    &__clearButton {
+        transition: 
+            filter 100ms ease-in-out,
+            color 100ms ease-in-out;
+
+        &:hover {
+            color: $red_1;
+
+            filter: opacity(1);
+        }
+
+        &:active {
+            filter: opacity(0.2);
+        }
+    }
+}
