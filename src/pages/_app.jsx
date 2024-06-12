@@ -1,10 +1,14 @@
+import StoreProvider from "@/contexts/StoreProvider";
+
 import "@/styles/globals.scss";
 
 const App = ({ Component, pageProps }) => {
     return (
-        <main>
-            <Component {...pageProps} />
-        </main>
+        <StoreProvider>
+            <main>
+                <Component {...pageProps} />
+            </main>
+        </StoreProvider>
     )
 }
 

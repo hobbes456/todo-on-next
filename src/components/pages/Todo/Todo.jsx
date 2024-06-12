@@ -1,18 +1,20 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import Item from "@/components/pages/Item";
-import { exampleTodos } from "@/stubs/exampleTodos";
+import { StoreContext } from "@/contexts/StoreProvider";
 
 import s from "./Todo.module.scss";
 
-const Todo = () => {
+const Todo = () => { 
     const [showContent, setShowContent] = useState(false);
 
+    const {todos} = useContext(StoreContext);
+
     useEffect(() => {
-        setShowContent(exampleTodos.length > 0 ? true : false);
-    }, [exampleTodos])
+        setShowContent(todos.length > 0 ? true : false);
+    }, [todos])
 
     return (<div className={s.todo}>
         <Header />
@@ -20,7 +22,7 @@ const Todo = () => {
             <input id="toggleAll" type="checkbox" />
             {showContent ? <label className={s.todo__toggleAll} htmlFor="toggleAll"/> : <></>}
             <ul className={s.todo__itemsList}>
-                {exampleTodos.map(item => {
+                {todos.map(item => {
                     return <Item item={item} key={item.id}/>
                 })}
             </ul>

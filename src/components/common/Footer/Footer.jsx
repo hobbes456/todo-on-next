@@ -1,16 +1,18 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Link from "next/link";
 import clsx from "clsx";
 
+import { StoreContext } from "@/contexts/StoreProvider";
 import { buttonsContent } from "@/constants/buttonsContent";
-import { exampleTodos } from "@/stubs/exampleTodos";
 
 import s from "./Footer.module.scss";
 
 const Footer = () => {
     const [activeLinkId, setActiveLinkId] = useState(buttonsContent[0].id);
 
-    const activeCount = exampleTodos.filter((item) => !item.isCompleted).length;
+    const {todos} = useContext(StoreContext);
+
+    const activeCount = todos.filter((item) => !item.isCompleted).length;
     const itemWord = activeCount === 1 ? "item" : "items";
 
     const handlerClick = (linkId) => {
