@@ -1,0 +1,16 @@
+@import "@/styles/_variables.scss";
+@import "@/styles/_mixins.scss";
+
+.itemEdit {
+    display: flex;
+    width: 100%;
+    
+    & > input {
+        @include item_content_edit;
+        @include p-big-font;
+    }
+    
+    border-top: 1px solid $main;
+    
+    cursor: pointer;
+}

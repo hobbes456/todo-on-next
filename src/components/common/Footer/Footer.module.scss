@@ -26,6 +26,26 @@
         }
     }
 
+    &__link {
+        padding: 3px;
+        
+        outline: 1px solid transparent;
+        border-radius: 2px;
+        
+        transition:
+            color 100ms ease-in-out,
+            outline-color 100ms ease-in-out;
+        
+        &:hover {
+            outline-color: $main;
+        }
+        
+        &_active {
+            color: $main;
+            outline-color: $main;
+        }
+    }
+        
     &__clearButton {
         transition: 
             filter 100ms ease-in-out,
