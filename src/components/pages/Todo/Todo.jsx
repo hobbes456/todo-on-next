@@ -9,8 +9,15 @@ import s from "./Todo.module.scss";
 
 const Todo = () => { 
     const [showContent, setShowContent] = useState(false);
+    const {storeData, setStoreData} = useContext(StoreContext);
 
-    const {todos} = useContext(StoreContext).storeData;
+    const {todos} = storeData;
+
+    const handlerToggleAll = () => {
+        const changedTodos = todos.map((todo) => todo.isCompleted ? todo : {...todo, isCompleted: true});
+
+        setStoreData(prev => ({...prev, todos: [...changedTodos]}));
+    }
 
     useEffect(() => {
         setShowContent(todos.length > 0 ? true : false);
@@ -19,7 +26,10 @@ const Todo = () => {
     return (<div className={s.todo}>
         <Header />
         <div className={s.todo__content}>
-            <input id="toggleAll" type="checkbox" />
+            <input 
+                id="toggleAll" 
+                type="checkbox" 
+                onClick={handlerToggleAll}/>
             {showContent ? <label className={s.todo__toggleAll} htmlFor="toggleAll"/> : <></>}
             <ul className={s.todo__itemsList}>
                 {todos.map(item => {
