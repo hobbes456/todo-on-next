@@ -15,6 +15,12 @@ const ItemTemplate = ({item, onDoubleClick}) => {
         setStoreData(prev => ({...prev, todos: [...changedTodos]}));
     }
 
+    const handlerDelete = () => {
+        const changedTodos = storeData.todos.filter((todo) => todo.id !== item.id);
+
+        setStoreData(prev => ({...prev, todos: [...changedTodos]}));
+    }
+
     return (
         <div className={clsx(s.itemTemplate, item.isCompleted && s.itemTemplate_completed)}>
             <input 
@@ -27,7 +33,9 @@ const ItemTemplate = ({item, onDoubleClick}) => {
                 className={s.itemTemplate__content}
                 onDoubleClick={onDoubleClick}
             >{item.value}</div>
-            <button className={s.itemTemplate__button}>+</button>
+            <button
+                className={s.itemTemplate__button}
+                onClick={handlerDelete}>+</button>
         </div>
     )
 }
