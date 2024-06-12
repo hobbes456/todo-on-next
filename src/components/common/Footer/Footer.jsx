@@ -9,8 +9,9 @@ import s from "./Footer.module.scss";
 
 const Footer = () => {
     const [activeLinkId, setActiveLinkId] = useState(buttonsContent[0].id);
+    const {storeData, setStoreData} = useContext(StoreContext);
 
-    const {todos} = useContext(StoreContext).storeData;
+    const {todos} = storeData;
 
     const activeCount = todos.filter((item) => !item.isCompleted).length;
     const itemWord = activeCount === 1 ? "item" : "items";
@@ -18,6 +19,12 @@ const Footer = () => {
     const handlerClick = (linkId) => {
         setActiveLinkId(prev => prev = linkId);
     };
+
+    const handlerAllCompletedDelete = () => {
+        const changedTodos = todos.filter((todo) => !todo.isCompleted);
+
+        setStoreData(prev => ({...prev, todos: [...changedTodos]}));
+    }
     
     return (
         <div className={s.footer}>
@@ -37,7 +44,7 @@ const Footer = () => {
             <Link 
                 className={s.footer__clearButton} 
                 href="#delete-btn"
-                onClick={() => {}}
+                onClick={handlerAllCompletedDelete}
             >Clear Completed</Link>
         </div>
     );
