@@ -10,7 +10,7 @@ import s from "./Todo.module.scss";
 const Todo = () => { 
     const [showContent, setShowContent] = useState(false);
 
-    const {todos} = useContext(StoreContext);
+    const {todos} = useContext(StoreContext).storeData;
 
     useEffect(() => {
         setShowContent(todos.length > 0 ? true : false);
