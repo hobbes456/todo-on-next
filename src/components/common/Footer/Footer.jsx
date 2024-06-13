@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import Link from "next/link";
 import clsx from "clsx";
 
@@ -8,16 +8,15 @@ import { buttonsContent } from "@/constants/buttonsContent";
 import s from "./Footer.module.scss";
 
 const Footer = () => {
-    const [activeLinkId, setActiveLinkId] = useState(buttonsContent[0].id);
     const {storeData, setStoreData} = useContext(StoreContext);
 
-    const {todos} = storeData;
+    const {todos, filter} = storeData;
 
     const activeCount = todos.filter((item) => !item.isCompleted).length;
     const itemWord = activeCount === 1 ? "item" : "items";
 
-    const handlerClick = (linkId) => {
-        setActiveLinkId(prev => prev = linkId);
+    const handlerClick = (item) => {
+        setStoreData(prev => ({...prev, filter: item.text}));
     };
 
     const handlerAllCompletedDelete = () => {
@@ -34,9 +33,9 @@ const Footer = () => {
                     return (
                         <Link 
                             key={item.id}
-                            className={clsx(s.footer__link, activeLinkId === item.id && s.footer__link_active)}
+                            className={clsx(s.footer__link, item.text === filter && s.footer__link_active)}
                             href={item.href}
-                            onClick={() => handlerClick(item.id)}
+                            onClick={() => handlerClick(item)}
                         >{item.text}</Link>
                     )
                 })}
