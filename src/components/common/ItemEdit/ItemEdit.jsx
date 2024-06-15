@@ -8,14 +8,18 @@ const ItemEdit = ({item, onBlur}) => {
     useEffect(() => inputRef.current.focus())
 
     return(
-        <div className={s.itemEdit}>
+        <form 
+            className={s.itemEdit}
+            action="#"
+            method="post"
+            onSubmit={() => {}}>
             <input 
                 type="text"
                 value={item.value}
                 ref={inputRef}
                 onChange={() => {}}
                 onBlur={onBlur}/>
-        </div>
+        </form>
     );
 }
 
