@@ -6,10 +6,7 @@ const filtersReducer = (state = initialState, action) => {
     switch (action.type) {
         case "filters/statusFilterChanged": {
             return {
-                ...state,
-                filters: {
-                    status: action.payload
-                }
+                status: action.payload
             }
         }
         
