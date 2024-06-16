@@ -10,7 +10,7 @@ import s from "./Footer.module.scss";
 const Footer = () => {
     const [activeLinkId, setActiveLinkId] = useState(buttonsContent[0].id);
 
-    const {todos} = useSelector(state => state.todos);
+    const todos = useSelector(state => state.todos);
 
     const activeCount = todos.filter((item) => !item.isCompleted).length;
     const itemWord = activeCount === 1 ? "item" : "items";

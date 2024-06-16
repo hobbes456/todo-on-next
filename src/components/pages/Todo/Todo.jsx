@@ -9,7 +9,7 @@ import s from "./Todo.module.scss";
 
 const Todo = () => {
     const [showContent, setShowContent] = useState(false);
-    const {todos} = useSelector(state => state.todos);
+    const todos = useSelector(state => state.todos);
 
     useEffect(() => {
         setShowContent(todos.length > 0 ? true : false);
