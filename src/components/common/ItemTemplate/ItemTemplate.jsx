@@ -8,7 +8,11 @@ const ItemTemplate = ({item, onDoubleClick}) => {
 
     const handlerDeleted = () => {
         dispatch({type: "todos/todoDeleted", payload: item.id});
-    }
+    };
+
+    const handlerChange = () => {
+        dispatch({type: "todos/todoToggled", payload: item.id});
+    };
 
     return (
         <div className={clsx(s.itemTemplate, item.isCompleted && s.itemTemplate_completed)}>
@@ -16,7 +20,7 @@ const ItemTemplate = ({item, onDoubleClick}) => {
                 id={item.id} 
                 type="checkbox" 
                 checked={item.isCompleted}
-                onChange={() => {}}/>
+                onChange={handlerChange}/>
             <label className={s.itemTemplate__checkbox} htmlFor={item.id} />
             <div 
                 className={s.itemTemplate__content}
