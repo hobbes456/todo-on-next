@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
+import { todoAdded } from "@/reducers/todosSlice";
+
 import s from "./Header.module.scss";
 
 const Header = () => {
@@ -14,7 +16,7 @@ const Header = () => {
 
         if (inputValue.trim() === "") return;
 
-        dispatch({type: "todos/todoAdded", payload: inputValue});
+        dispatch(todoAdded(inputValue));
 
         setValueInput("");
     }

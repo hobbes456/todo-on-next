@@ -1,14 +1,16 @@
 import { useDispatch } from "react-redux";
 import clsx from "clsx";
 
+import { todoDeleted, todoToggled } from "@/reducers/todosSlice";
+
 import s from "./ItemTemplate.module.scss";
 
 const ItemTemplate = ({item, onDoubleClick}) => {
     const dispatch = useDispatch();
 
-    const handlerDeleted = () => dispatch({type: "todos/todoDeleted", payload: item.id});
+    const handlerDeleted = () => dispatch(todoDeleted(item.id));
 
-    const handlerChange = () => dispatch({type: "todos/todoToggled", payload: item.id});
+    const handlerChange = () => dispatch(todoToggled(item.id));
 
     return (
         <div className={clsx(s.itemTemplate, item.isCompleted && s.itemTemplate_completed)}>

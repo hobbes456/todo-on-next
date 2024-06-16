@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import Item from "@/components/pages/Item";
+import { todoAllCompleted } from "@/reducers/todosSlice";
 
 import s from "./Todo.module.scss";
 
@@ -12,7 +13,7 @@ const Todo = () => {
     const todos = useSelector(state => state.todos);
     const dispatch = useDispatch();
 
-    const handlerChange = () => dispatch({type: "todos/todoAllCompleted"});
+    const handlerChange = () => dispatch(todoAllCompleted());
 
     useEffect(() => {
         setShowContent(todos.length > 0 ? true : false);

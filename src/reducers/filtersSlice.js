@@ -1,10 +1,12 @@
+import { FILTER_STATUS_CHANGED } from "@/constants/actions";
+
 const initialState = {
     status: "All"
 }
 
 const filtersReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "filters/statusFilterChanged": {
+        case FILTER_STATUS_CHANGED: {
             return {
                 status: action.payload
             }
@@ -13,5 +15,7 @@ const filtersReducer = (state = initialState, action) => {
         default: return state;
     }
 }
+
+export const filterChanged = (filter) => ({type: FILTER_STATUS_CHANGED, payload: filter}); 
 
 export default filtersReducer;

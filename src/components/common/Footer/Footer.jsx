@@ -2,6 +2,8 @@ import { useSelector, useDispatch } from "react-redux";
 import Link from "next/link";
 import clsx from "clsx";
 
+import { todoClearCompleted } from "@/reducers/todosSlice";
+import { filterChanged } from "@/reducers/filtersSlice";
 import { buttonsContent } from "@/constants/buttonsContent";
 
 import s from "./Footer.module.scss";
@@ -15,10 +17,10 @@ const Footer = () => {
     const itemWord = activeCount === 1 ? "item" : "items";
 
     const handlerLinkClick = (event) => {
-        dispatch({type: "filters/statusFilterChanged", payload: event.target.textContent});
+        dispatch(filterChanged(event.target.textContent));
     };
 
-    const handlerDeleteButton = () => dispatch({type: "todos/todoClearCompleted"});
+    const handlerDeleteButton = () => dispatch(todoClearCompleted());
     
     return (
         <div className={s.footer}>
