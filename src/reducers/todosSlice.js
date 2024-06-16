@@ -12,6 +12,10 @@ const todosReducer = (state = initialState, action) => {
             return state.filter((item) => item.id !== action.payload);
         }
 
+        case "todos/todoEdited": {
+            return state.map((item) => item.id !== action.payload ? item : ({...item, value: action.value}));
+        }
+
         default: return state;
     }
 };
