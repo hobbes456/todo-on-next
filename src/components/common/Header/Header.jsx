@@ -12,7 +12,9 @@ const Header = () => {
     const handlerSubmit = (event) => {
         event.preventDefault();
 
-        dispatch({type: "todos/todoAdded", payload: inputValue.trim()});
+        if (inputValue.trim() === "") return;
+
+        dispatch({type: "todos/todoAdded", payload: inputValue});
 
         setValueInput("");
     }
