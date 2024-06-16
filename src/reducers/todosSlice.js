@@ -1,11 +1,7 @@
 import { Item } from "@/constants/Item";
 
 const initialState = {
-    todos: [
-        {id: 1, value: "Learn Context", isCompleted: false},
-        {id: 2, value: "Learn Redux", isCompleted: false},
-        {id: 3, value: "Learn Redux toolkit", isCompleted: false},
-    ],
+    todos: []
 }
 
 const todosReducer = (state = initialState, action) => {
@@ -18,7 +14,7 @@ const todosReducer = (state = initialState, action) => {
             return todos.filter((todo) => todo.id !== action.payload);
         }
         case "todos/todoEdited": {
-            return todos.map((todo, newValue) => todo.id !== action.payload ? todo : ({...todo, value: newValue}))
+            return todos.map((todo) => todo.id !== action.payload ? todo : ({...todo, value: action.value}))
         }
 
         case "todos/todoToggled": {
