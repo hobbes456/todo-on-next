@@ -24,6 +24,10 @@ const todosReducer = (state = initialState, action) => {
             return state.map((item) => ({...item, isCompleted: true}));
         }
 
+        case "todos/todoClearCompleted": {
+            return state.filter((item) => item.isCompleted === false);
+        }
+
         default: return state;
     }
 };

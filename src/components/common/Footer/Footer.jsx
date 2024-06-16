@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Link from "next/link";
 import clsx from "clsx";
 
@@ -9,8 +9,8 @@ import s from "./Footer.module.scss";
 
 const Footer = () => {
     const [activeLinkId, setActiveLinkId] = useState(buttonsContent[0].id);
-
     const todos = useSelector(state => state.todos);
+    const dispatch = useDispatch();
 
     const activeCount = todos.filter((item) => !item.isCompleted).length;
     const itemWord = activeCount === 1 ? "item" : "items";
@@ -18,6 +18,8 @@ const Footer = () => {
     const handlerClick = (linkId) => {
         setActiveLinkId(prev => prev = linkId);
     };
+
+    const handlerDeleteButton = () => dispatch({type: "todos/todoClearCompleted"});
     
     return (
         <div className={s.footer}>
@@ -37,7 +39,7 @@ const Footer = () => {
             <Link 
                 className={s.footer__clearButton} 
                 href="#delete-btn"
-                onClick={() => {}}
+                onClick={handlerDeleteButton}
             >Clear Completed</Link>
         </div>
     );
