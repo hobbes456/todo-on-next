@@ -4,13 +4,14 @@ import { useSelector, useDispatch } from "react-redux";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import Item from "@/components/pages/Item";
-import { todoAllCompleted } from "@/reducers/todosSlice";
+import { selectedFiltersTodos, todoAllCompleted } from "@/reducers/todosSlice";
 
 import s from "./Todo.module.scss";
 
 const Todo = () => {
     const [showContent, setShowContent] = useState(false);
     const todos = useSelector(state => state.todos);
+    const selectedTodos = useSelector(state => selectedFiltersTodos(state));
     const dispatch = useDispatch();
 
     const handlerChange = () => dispatch(todoAllCompleted());
@@ -28,7 +29,7 @@ const Todo = () => {
                 onChange={handlerChange}/>
             {showContent ? <label className={s.todo__toggleAll} htmlFor="toggleAll"/> : <></>}
             <ul className={s.todo__itemsList}>
-                {todos.map(item => {
+                {selectedTodos.map(item => {
                     return <Item item={item} key={item.id}/>
                 })}
             </ul>

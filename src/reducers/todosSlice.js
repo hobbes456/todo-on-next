@@ -1,5 +1,8 @@
+import { createSelector } from "reselect";
+
 import { Item } from "@/constants/Item";
 import { TODO_ADD, TODO_DELETED, TODO_EDITED, TODO_TOGGLED, TODO_ALL_COMPLETED, TODO_CLEAR_COMPLETED } from "@/constants/actions";
+import { ALL, ACTIVE } from "@/constants/filtersSettings";
 
 const initialState = [];
 
@@ -39,5 +42,17 @@ export const todoEdited = (id, value) => ({type: TODO_EDITED, payload: id, value
 export const todoToggled = (id) => ({type: TODO_TOGGLED, payload: id});
 export const todoAllCompleted = () => ({type: TODO_ALL_COMPLETED});
 export const todoClearCompleted = () => ({type: TODO_CLEAR_COMPLETED});
+
+export const selectedFiltersTodos = createSelector(
+    state => state.todos,
+    state => state.filters.status,
+    (todos, status) => {
+        if (status === ALL) {
+            return todos;
+        }
+
+        return todos.filter(todo => status === ACTIVE ? !todo.isCompleted : todo.isCompleted);
+    }
+);
 
 export default todosReducer;

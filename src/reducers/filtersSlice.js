@@ -1,7 +1,8 @@
 import { FILTER_STATUS_CHANGED } from "@/constants/actions";
+import { ALL } from "@/constants/filtersSettings";
 
 const initialState = {
-    status: "All"
+    status: ALL
 }
 
 const filtersReducer = (state = initialState, action) => {
@@ -16,6 +17,6 @@ const filtersReducer = (state = initialState, action) => {
     }
 }
 
-export const filterChanged = (filter) => ({type: FILTER_STATUS_CHANGED, payload: filter}); 
+export const filterChanged = (filter) => ({type: FILTER_STATUS_CHANGED, payload: filter});
 
 export default filtersReducer;
