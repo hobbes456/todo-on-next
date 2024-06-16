@@ -8,6 +8,10 @@ const todosReducer = (state = initialState, action) => {
             return [...state, new Item(state, action.payload)]
         }
 
+        case "todos/todoDeleted": {
+            return state.filter((item) => item.id !== action.payload);
+        }
+
         default: return state;
     }
 };

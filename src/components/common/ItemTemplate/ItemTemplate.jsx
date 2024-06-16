@@ -1,8 +1,15 @@
+import { useDispatch } from "react-redux";
 import clsx from "clsx";
 
 import s from "./ItemTemplate.module.scss";
 
-const ItemTemplate = ({item, onDoubleClick}) => {   
+const ItemTemplate = ({item, onDoubleClick}) => {
+    const dispatch = useDispatch();
+
+    const handlerDeleted = () => {
+        dispatch({type: "todos/todoDeleted", payload: item.id});
+    }
+
     return (
         <div className={clsx(s.itemTemplate, item.isCompleted && s.itemTemplate_completed)}>
             <input 
@@ -15,7 +22,9 @@ const ItemTemplate = ({item, onDoubleClick}) => {
                 className={s.itemTemplate__content}
                 onDoubleClick={onDoubleClick}
             >{item.value}</div>
-            <button className={s.itemTemplate__button}>+</button>
+            <button 
+                className={s.itemTemplate__button}
+                onClick={handlerDeleted}>+</button>
         </div>
     )
 }
