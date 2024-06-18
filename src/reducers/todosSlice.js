@@ -17,7 +17,7 @@ const todosReducer = (state = initialState, action) => {
         }
 
         case TODO_EDITED: {
-            return state.map((item) => item.id !== action.payload ? item : ({...item, value: action.value}));
+            return state.map((item) => item.id !== action.payload.id ? item : ({...item, value: action.payload.value}));
         }
 
         case TODO_TOGGLED: {
@@ -38,7 +38,7 @@ const todosReducer = (state = initialState, action) => {
 
 export const todoAdded = (value) => ({type: TODO_ADD, payload: value});
 export const todoDeleted = (id) => ({type: TODO_DELETED, payload: id});
-export const todoEdited = (id, value) => ({type: TODO_EDITED, payload: id, value: value});
+export const todoEdited = (item) => ({type: TODO_EDITED, payload: item});
 export const todoToggled = (id) => ({type: TODO_TOGGLED, payload: id});
 export const todoAllCompleted = () => ({type: TODO_ALL_COMPLETED});
 export const todoClearCompleted = () => ({type: TODO_CLEAR_COMPLETED});

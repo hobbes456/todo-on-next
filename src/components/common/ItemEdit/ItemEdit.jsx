@@ -10,6 +10,11 @@ const ItemEdit = ({item, onBlur}) => {
     const inputRef = useRef(null);
     const dispatch = useDispatch();
 
+    const editedItem = {
+        id: item.id,
+        value: inputValue
+    }
+
     const handlerChange = (event) => setInputValue(event.target.value);
 
     const handlerSubmit = (event) => {
@@ -17,7 +22,7 @@ const ItemEdit = ({item, onBlur}) => {
 
         if (inputValue.trim() === "") dispatch(todoDeleted(item.id));
 
-        dispatch(todoEdited(item.id, inputValue));
+        dispatch(todoEdited(editedItem));
 
         inputRef.current.blur();
     }
