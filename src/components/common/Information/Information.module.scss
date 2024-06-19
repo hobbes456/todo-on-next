@@ -2,13 +2,14 @@
 @import "@/styles/_mixins.scss";
 
 .information {
-    margin-bottom: 50px;
+    margin: 65px 0 50px 0;
 
     @include flex_column_center;
-    gap: 15px;
     width: 100%;
 
     &__text {
+        margin-top: 15px;
+
         @include p-small-font;
         color: $grey_2;
     }

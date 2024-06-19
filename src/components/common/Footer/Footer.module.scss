@@ -19,20 +19,21 @@
     &__buttons {
         display: flex;
         align-items: center;
-        gap: 15px;
-
-        @include _550 {
-            gap: 5px;
-        }
     }
 
     &__link {
+        margin: 0 5px;
         padding: 3px;
 
         outline: 1px solid transparent;
         border-radius: 2px;
 
         transition: color 100ms ease-in-out, outline-color 100ms ease-in-out;
+
+        @include _550 {
+            margin: 0 2px;
+            padding: 0;
+        }
 
         &:hover {
             outline-color: $main;
