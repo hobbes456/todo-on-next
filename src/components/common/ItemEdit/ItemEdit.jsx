@@ -10,11 +10,9 @@ const ItemEdit = ({ item, onBlur }) => {
 
     const inputRef = useRef(null);
 
-    const handlerChange = (event) => {
-        setInputValue(event.target.value);
-    };
+    const handleChange = (event) => setInputValue(event.target.value);
 
-    const handlerDelete = () => {
+    const handleDelete = () => {
         const changedTodos = storeData.todos.filter(
             (todo) => todo.id !== item.id
         );
@@ -22,11 +20,11 @@ const ItemEdit = ({ item, onBlur }) => {
         setStoreData((prev) => ({ ...prev, todos: [...changedTodos] }));
     };
 
-    const handlerSubmit = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
 
         if (inputValue.trim() === "") {
-            handlerDelete();
+            handleDelete();
             return;
         }
 
@@ -39,7 +37,7 @@ const ItemEdit = ({ item, onBlur }) => {
         inputRef.current.blur();
     };
 
-    const handlerKeyDown = (event) => {
+    const handleKeyDown = (event) => {
         if (event.key !== "Escape") return;
 
         inputRef.current.blur();
@@ -52,15 +50,15 @@ const ItemEdit = ({ item, onBlur }) => {
             className={s.itemEdit}
             action="#"
             method="post"
-            onSubmit={handlerSubmit}
+            onSubmit={handleSubmit}
         >
             <input
                 type="text"
                 value={inputValue}
                 ref={inputRef}
-                onChange={handlerChange}
+                onChange={handleChange}
                 onBlur={onBlur}
-                onKeyDown={handlerKeyDown}
+                onKeyDown={handleKeyDown}
             />
         </form>
     );

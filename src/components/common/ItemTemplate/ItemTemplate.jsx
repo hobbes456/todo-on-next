@@ -8,7 +8,7 @@ import s from "./ItemTemplate.module.scss";
 const ItemTemplate = ({ item, onDoubleClick }) => {
     const { storeData, setStoreData } = useContext(StoreContext);
 
-    const handlerChange = () => {
+    const handleChange = () => {
         const changedTodos = storeData.todos.map((todo) =>
             todo.id === item.id
                 ? { ...todo, isCompleted: !todo.isCompleted }
@@ -18,7 +18,7 @@ const ItemTemplate = ({ item, onDoubleClick }) => {
         setStoreData((prev) => ({ ...prev, todos: [...changedTodos] }));
     };
 
-    const handlerDelete = () => {
+    const handleDelete = () => {
         const changedTodos = storeData.todos.filter(
             (todo) => todo.id !== item.id
         );
@@ -37,7 +37,7 @@ const ItemTemplate = ({ item, onDoubleClick }) => {
                 id={item.id}
                 type="checkbox"
                 checked={item.isCompleted}
-                onChange={handlerChange}
+                onChange={handleChange}
             />
             <label className={s.itemTemplate__checkbox} htmlFor={item.id} />
             <div
@@ -46,7 +46,7 @@ const ItemTemplate = ({ item, onDoubleClick }) => {
             >
                 {item.value}
             </div>
-            <button className={s.itemTemplate__button} onClick={handlerDelete}>
+            <button className={s.itemTemplate__button} onClick={handleDelete}>
                 +
             </button>
         </div>

@@ -15,11 +15,10 @@ const Footer = () => {
     const activeCount = todos.filter((item) => !item.isCompleted).length;
     const itemWord = activeCount === 1 ? "item" : "items";
 
-    const handlerClick = (item) => {
+    const handleClick = (item) =>
         setStoreData((prev) => ({ ...prev, filter: item.text }));
-    };
 
-    const handlerAllCompletedDelete = () => {
+    const handleAllCompletedDelete = () => {
         const changedTodos = todos.filter((todo) => !todo.isCompleted);
 
         setStoreData((prev) => ({ ...prev, todos: [...changedTodos] }));
@@ -29,26 +28,24 @@ const Footer = () => {
         <div className={s.footer}>
             <p>{`${activeCount} ${itemWord} left`}</p>
             <div className={s.footer__buttons}>
-                {buttonsContent.map((item) => {
-                    return (
-                        <Link
-                            key={item.id}
-                            className={clsx(
-                                s.footer__link,
-                                item.text === filter && s.footer__link_active
-                            )}
-                            href={item.href}
-                            onClick={() => handlerClick(item)}
-                        >
-                            {item.text}
-                        </Link>
-                    );
-                })}
+                {buttonsContent.map((item) => (
+                    <Link
+                        key={item.id}
+                        className={clsx(
+                            s.footer__link,
+                            item.text === filter && s.footer__link_active
+                        )}
+                        href={item.href}
+                        onClick={() => handleClick(item)}
+                    >
+                        {item.text}
+                    </Link>
+                ))}
             </div>
             <Link
                 className={s.footer__clearButton}
                 href="#delete-btn"
-                onClick={handlerAllCompletedDelete}
+                onClick={handleAllCompletedDelete}
             >
                 Clear Completed
             </Link>

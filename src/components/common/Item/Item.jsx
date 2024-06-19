@@ -6,14 +6,14 @@ import ItemEdit from "@/components/common/ItemEdit";
 const Item = ({ item }) => {
     const [isEdit, setIsEdit] = useState(false);
 
-    const handlerEdit = () => setIsEdit((prev) => !prev);
+    const handleEdit = () => setIsEdit((prev) => !prev);
 
     return (
         <li>
             {isEdit ? (
-                <ItemEdit item={item} onBlur={handlerEdit} />
+                <ItemEdit item={item} onBlur={handleEdit} />
             ) : (
-                <ItemTemplate item={item} onDoubleClick={handlerEdit} />
+                <ItemTemplate item={item} onDoubleClick={handleEdit} />
             )}
         </li>
     );

@@ -25,7 +25,7 @@ const Todo = () => {
         itemsByFilter(todos, filter)
     );
 
-    const handlerToggleAll = () => {
+    const handleToggleAll = () => {
         const changedTodos = todos.map((todo) =>
             todo.isCompleted ? todo : { ...todo, isCompleted: true }
         );
@@ -48,7 +48,7 @@ const Todo = () => {
                 <input
                     id="toggleAll"
                     type="checkbox"
-                    onClick={handlerToggleAll}
+                    onClick={handleToggleAll}
                 />
                 {showContent ? (
                     <label className={s.todo__toggleAll} htmlFor="toggleAll" />
@@ -56,9 +56,9 @@ const Todo = () => {
                     <></>
                 )}
                 <ul className={s.todo__itemsList}>
-                    {filteredTodos.map((item) => {
-                        return <Item item={item} key={item.id} />;
-                    })}
+                    {filteredTodos.map((item) => (
+                        <Item item={item} key={item.id} />
+                    ))}
                 </ul>
             </div>
             {showContent ? <Footer /> : <></>}

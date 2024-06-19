@@ -9,9 +9,7 @@ const Header = () => {
     const { storeData, setStoreData } = useContext(StoreContext);
     const [inputValue, setInputValue] = useState("");
 
-    const handlerChange = (event) => {
-        setInputValue(event.target.value);
-    };
+    const handleChange = (event) => setInputValue(event.target.value);
 
     const addNewItem = (value) => {
         if (value.trim() === "") return;
@@ -22,7 +20,7 @@ const Header = () => {
         }));
     };
 
-    const handlerSubmit = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
 
         addNewItem(inputValue);
@@ -35,7 +33,7 @@ const Header = () => {
             className={s.header}
             action="#"
             method="post"
-            onSubmit={handlerSubmit}
+            onSubmit={handleSubmit}
         >
             <h1 className={s.header__title}>todos</h1>
             <input
@@ -43,7 +41,7 @@ const Header = () => {
                 type="text"
                 value={inputValue}
                 placeholder="What needs to be done?"
-                onChange={handlerChange}
+                onChange={handleChange}
                 autoFocus={true}
             />
         </form>
