@@ -1,1 +1,1 @@
-export {default} from "./ItemTemplate"
+export { default } from "./ItemTemplate";

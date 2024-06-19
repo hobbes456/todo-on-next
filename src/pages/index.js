@@ -6,17 +6,23 @@ const HomePage = () => {
     return (
         <>
             <Head>
-                <meta charset="UTF-8"/>
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <meta name="keywords" content="todo"/>
-                <meta name="description" content="Simple toDo app"/>
-                <meta http-equiv="Permissions-Policy" content="interest-cohort=()"/>
+                <meta charset="UTF-8" />
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1"
+                />
+                <meta name="keywords" content="todo" />
+                <meta name="description" content="Simple toDo app" />
+                <meta
+                    http-equiv="Permissions-Policy"
+                    content="interest-cohort=()"
+                />
                 <title>todos app</title>
-                <link rel="icon" href="/favicon.png"/>
+                <link rel="icon" href="/favicon.png" />
             </Head>
-            <AppMain/>
+            <AppMain />
         </>
     );
-}
+};
 
 export default HomePage;

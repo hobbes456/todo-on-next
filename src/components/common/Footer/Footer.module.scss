@@ -7,15 +7,15 @@
     align-items: center;
     width: 100%;
     padding: 15px 0;
-    
+
     @include p-normal-font;
-    
+
     border-top: 1px solid $main;
-    
+
     &_show {
         display: flex;
     }
-    
+
     &__buttons {
         display: flex;
         align-items: center;
@@ -28,28 +28,24 @@
 
     &__link {
         padding: 3px;
-        
+
         outline: 1px solid transparent;
         border-radius: 2px;
-        
-        transition:
-            color 100ms ease-in-out,
-            outline-color 100ms ease-in-out;
-        
+
+        transition: color 100ms ease-in-out, outline-color 100ms ease-in-out;
+
         &:hover {
             outline-color: $main;
         }
-        
+
         &_active {
             color: $main;
             outline-color: $main;
         }
     }
-        
+
     &__clearButton {
-        transition: 
-            filter 100ms ease-in-out,
-            color 100ms ease-in-out;
+        transition: filter 100ms ease-in-out, color 100ms ease-in-out;
 
         &:hover {
             color: $red_1;

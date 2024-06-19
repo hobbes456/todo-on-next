@@ -5,18 +5,18 @@
     display: flex;
     align-items: center;
     width: 100%;
-    
+
     border-top: 1px solid $main;
 
     &_completed {
-        input[type="checkbox"]:checked~.itemTemplate__content {
+        input[type="checkbox"]:checked ~ .itemTemplate__content {
             color: $grey_4;
-                    
+
             text-decoration: line-through 2px;
         }
     }
 
-    input[type="checkbox"]:checked~.itemTemplate__checkbox::before {
+    input[type="checkbox"]:checked ~ .itemTemplate__checkbox::before {
         width: 21px;
         height: 10px;
 
@@ -45,12 +45,10 @@
 
             content: "";
 
-            transition:
-                color 300ms ease-in-out,
-                transform 300ms ease-in-out;
+            transition: color 300ms ease-in-out, transform 300ms ease-in-out;
         }
     }
-    
+
     &__content {
         @include item_content_edit;
         @include p-big-font;

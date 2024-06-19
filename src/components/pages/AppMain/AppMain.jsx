@@ -15,14 +15,16 @@ const AppMain = () => {
 
     return (
         <>
-            {isLoading ? 
-                    <AppLoader /> :
-                    <div className={s.main}>
-                        <Todo/>
-                        <Information/>
-                    </div>}
+            {isLoading ? (
+                <AppLoader />
+            ) : (
+                <div className={s.main}>
+                    <Todo />
+                    <Information />
+                </div>
+            )}
         </>
-    )
-}
+    );
+};
 
 export default AppMain;

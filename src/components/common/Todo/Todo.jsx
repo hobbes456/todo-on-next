@@ -7,50 +7,63 @@ import { StoreContext } from "@/contexts/StoreProvider";
 
 import s from "./Todo.module.scss";
 
-const Todo = () => { 
-    const {storeData, setStoreData} = useContext(StoreContext);
-    const {todos, filter} = storeData;
-    
+const Todo = () => {
+    const { storeData, setStoreData } = useContext(StoreContext);
+    const { todos, filter } = storeData;
+
     const [showContent, setShowContent] = useState(false);
 
     const itemsByFilter = (items, filterSetting) => {
         if (filterSetting === "All") return items;
-        
-        return items.filter((item) => filterSetting !== "Active" ? item.isCompleted : !item.isCompleted);
-    }
 
-    const [filteredTodos, setFilteredTodos] = useState(itemsByFilter(todos, filter));
+        return items.filter((item) =>
+            filterSetting !== "Active" ? item.isCompleted : !item.isCompleted
+        );
+    };
+
+    const [filteredTodos, setFilteredTodos] = useState(
+        itemsByFilter(todos, filter)
+    );
 
     const handlerToggleAll = () => {
-        const changedTodos = todos.map((todo) => todo.isCompleted ? todo : {...todo, isCompleted: true});
+        const changedTodos = todos.map((todo) =>
+            todo.isCompleted ? todo : { ...todo, isCompleted: true }
+        );
 
-        setStoreData(prev => ({...prev, todos: [...changedTodos]}));
-    }
+        setStoreData((prev) => ({ ...prev, todos: [...changedTodos] }));
+    };
 
     useEffect(() => {
         setShowContent(todos.length > 0 ? true : false);
     }, [todos]);
 
     useEffect(() => {
-        setFilteredTodos(itemsByFilter(todos, filter))
+        setFilteredTodos(itemsByFilter(todos, filter));
     }, [todos, filter]);
 
-    return (<div className={s.todo}>
-        <Header />
-        <div className={s.todo__content}>
-            <input 
-                id="toggleAll" 
-                type="checkbox" 
-                onClick={handlerToggleAll}/>
-            {showContent ? <label className={s.todo__toggleAll} htmlFor="toggleAll"/> : <></>}
-            <ul className={s.todo__itemsList}>
-                {filteredTodos.map(item => {
-                    return <Item item={item} key={item.id}/>
-                })}
-            </ul>
+    return (
+        <div className={s.todo}>
+            <Header />
+            <div className={s.todo__content}>
+                <input
+                    id="toggleAll"
+                    type="checkbox"
+                    onClick={handlerToggleAll}
+                />
+                {showContent ? (
+                    <label className={s.todo__toggleAll} htmlFor="toggleAll" />
+                ) : (
+                    <></>
+                )}
+                <ul className={s.todo__itemsList}>
+                    {filteredTodos.map((item) => {
+                        return <Item item={item} key={item.id} />;
+                    })}
+                </ul>
+            </div>
+            {showContent ? <Footer /> : <></>}
         </div>
-        {showContent ? <Footer /> : <></>}
-    </div>)
-}
+    );
+};
 
 export default Todo;
