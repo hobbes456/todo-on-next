@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
-import Item from "@/components/pages/Item";
+import Item from "@/components/common/Item";
 import { StoreContext } from "@/contexts/StoreProvider";
 
 import s from "./Todo.module.scss";
