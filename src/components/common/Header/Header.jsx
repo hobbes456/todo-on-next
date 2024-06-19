@@ -9,9 +9,9 @@ const Header = () => {
     const [inputValue, setValueInput] = useState("");
     const dispatch = useDispatch();
 
-    const handlerChange = (event) => setValueInput(event.target.value);
+    const handleChange = (event) => setValueInput(event.target.value);
 
-    const handlerSubmit = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
 
         if (inputValue.trim() === "") return;
@@ -19,24 +19,26 @@ const Header = () => {
         dispatch(todoAdded(inputValue));
 
         setValueInput("");
-    }
+    };
 
     return (
-        <form 
+        <form
             className={s.header}
             action="#"
             method="post"
-            onSubmit={handlerSubmit}>
+            onSubmit={handleSubmit}
+        >
             <h1 className={s.header__title}>todos</h1>
-            <input 
-                className={s.header__input} 
+            <input
+                className={s.header__input}
                 type="text"
-                placeholder="What needs to be done?" 
+                placeholder="What needs to be done?"
                 autoFocus={true}
                 value={inputValue}
-                onChange={handlerChange}/>
+                onChange={handleChange}
+            />
         </form>
     );
-}
+};
 
 export default Header;

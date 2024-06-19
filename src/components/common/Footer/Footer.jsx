@@ -9,41 +9,45 @@ import { buttonsContent } from "@/constants/buttonsContent";
 import s from "./Footer.module.scss";
 
 const Footer = () => {
-    const todos = useSelector(state => state.todos);
-    const status = useSelector(state => state.filters.status)
+    const todos = useSelector((state) => state.todos);
+    const status = useSelector((state) => state.filters.status);
     const dispatch = useDispatch();
 
     const activeCount = todos.filter((item) => !item.isCompleted).length;
     const itemWord = activeCount === 1 ? "item" : "items";
 
-    const handlerLinkClick = (event) => {
+    const handleLinkClick = (event) =>
         dispatch(filterChanged(event.target.textContent));
-    };
 
-    const handlerDeleteButton = () => dispatch(todoClearCompleted());
-    
+    const handleDeleteButton = () => dispatch(todoClearCompleted());
+
     return (
         <div className={s.footer}>
             <p>{`${activeCount} ${itemWord} left`}</p>
             <div className={s.footer__buttons}>
-                {buttonsContent.map((item) => {
-                    return (
-                        <Link 
-                            key={item.id}
-                            className={clsx(s.footer__link, status === item.text && s.footer__link_active)}
-                            href={item.href}
-                            onClick={handlerLinkClick}
-                        >{item.text}</Link>
-                    )
-                })}
+                {buttonsContent.map((item) => (
+                    <Link
+                        key={item.id}
+                        className={clsx(
+                            s.footer__link,
+                            status === item.text && s.footer__link_active
+                        )}
+                        href={item.href}
+                        onClick={handleLinkClick}
+                    >
+                        {item.text}
+                    </Link>
+                ))}
             </div>
-            <Link 
-                className={s.footer__clearButton} 
+            <Link
+                className={s.footer__clearButton}
                 href="#delete-btn"
-                onClick={handlerDeleteButton}
-            >Clear Completed</Link>
+                onClick={handleDeleteButton}
+            >
+                Clear Completed
+            </Link>
         </div>
     );
-}
+};
 
 export default Footer;

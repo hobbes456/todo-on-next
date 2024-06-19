@@ -10,7 +10,7 @@ const App = ({ Component, pageProps }) => {
                 <Component {...pageProps} />
             </main>
         </Provider>
-    )
-}
+    );
+};
 
 export default App;

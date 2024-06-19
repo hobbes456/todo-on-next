@@ -5,30 +5,38 @@ import { todoDeleted, todoToggled } from "@/reducers/todosSlice";
 
 import s from "./ItemTemplate.module.scss";
 
-const ItemTemplate = ({item, onDoubleClick}) => {
+const ItemTemplate = ({ item, onDoubleClick }) => {
     const dispatch = useDispatch();
 
-    const handlerDeleted = () => dispatch(todoDeleted(item.id));
+    const handleDeleted = () => dispatch(todoDeleted(item.id));
 
-    const handlerChange = () => dispatch(todoToggled(item.id));
+    const handleChange = () => dispatch(todoToggled(item.id));
 
     return (
-        <div className={clsx(s.itemTemplate, item.isCompleted && s.itemTemplate_completed)}>
-            <input 
-                id={item.id} 
-                type="checkbox" 
+        <div
+            className={clsx(
+                s.itemTemplate,
+                item.isCompleted && s.itemTemplate_completed
+            )}
+        >
+            <input
+                id={item.id}
+                type="checkbox"
                 checked={item.isCompleted}
-                onChange={handlerChange}/>
+                onChange={handleChange}
+            />
             <label className={s.itemTemplate__checkbox} htmlFor={item.id} />
-            <div 
+            <div
                 className={s.itemTemplate__content}
                 onDoubleClick={onDoubleClick}
-            >{item.value}</div>
-            <button 
-                className={s.itemTemplate__button}
-                onClick={handlerDeleted}>+</button>
+            >
+                {item.value}
+            </div>
+            <button className={s.itemTemplate__button} onClick={handleDeleted}>
+                +
+            </button>
         </div>
-    )
-}
+    );
+};
 
 export default ItemTemplate;

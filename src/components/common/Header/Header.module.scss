@@ -1,6 +1,6 @@
 @import "@/styles/_variables.scss";
 @import "@/styles/_mixins.scss";
- 
+
 .header {
     @include flex_column_center;
     width: 100%;
@@ -11,7 +11,7 @@
 
         transition: color 600ms ease-in-out;
     }
-    
+
     &__input {
         position: relative;
 

@@ -2,54 +2,52 @@ import { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 
 import { todoDeleted, todoEdited } from "@/reducers/todosSlice";
+import { EditedItem } from "@/constants/editedItem";
 
 import s from "./ItemEdit.module.scss";
 
-const ItemEdit = ({item, onBlur}) => {
+const ItemEdit = ({ item, onBlur }) => {
     const [inputValue, setInputValue] = useState(item.value);
     const inputRef = useRef(null);
     const dispatch = useDispatch();
 
-    const editedItem = {
-        id: item.id,
-        value: inputValue
-    }
+    const handleChange = (event) => setInputValue(event.target.value);
 
-    const handlerChange = (event) => setInputValue(event.target.value);
-
-    const handlerSubmit = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
 
         if (inputValue.trim() === "") dispatch(todoDeleted(item.id));
 
-        dispatch(todoEdited(editedItem));
+        dispatch(todoEdited(new EditedItem(item.id, inputValue)));
 
         inputRef.current.blur();
-    }
+    };
 
-    const handlerKeyDown = (event) => {
+    const handleKeyDown = (event) => {
         if (event.key !== "Escape") return;
 
         inputRef.current.blur();
-    }
+    };
 
-    useEffect(() => inputRef.current.focus())
+    useEffect(() => inputRef.current.focus());
 
-    return(
-        <form 
+    return (
+        <form
             className={s.itemEdit}
             action="#"
             method="post"
-            onSubmit={handlerSubmit}>
-            <input 
+            onSubmit={handleSubmit}
+        >
+            <input
                 type="text"
                 value={inputValue}
                 ref={inputRef}
-                onChange={handlerChange}
-                onKeyDown={handlerKeyDown}
-                onBlur={onBlur}/>
+                onChange={handleChange}
+                onKeyDown={handleKeyDown}
+                onBlur={onBlur}
+            />
         </form>
     );
-}
+};
 
 export default ItemEdit;

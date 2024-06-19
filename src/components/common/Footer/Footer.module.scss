@@ -7,49 +7,46 @@
     align-items: center;
     width: 100%;
     padding: 15px 0;
-    
+
     @include p-normal-font;
-    
+
     border-top: 1px solid $main;
-    
+
     &_show {
         display: flex;
     }
-    
+
     &__buttons {
         display: flex;
         align-items: center;
-        gap: 15px;
-
-        @include _550 {
-            gap: 5px;
-        }
     }
-
+    
     &__link {
+        margin: 0 5px;
         padding: 3px;
         
         outline: 1px solid transparent;
         border-radius: 2px;
         
-        transition:
-            color 100ms ease-in-out,
-            outline-color 100ms ease-in-out;
+        transition: color 100ms ease-in-out, outline-color 100ms ease-in-out;
         
+        @include _550 {
+            margin: 0 3px;
+            padding: 0;
+        }
+
         &:hover {
             outline-color: $main;
         }
-        
+
         &_active {
             color: $main;
             outline-color: $main;
         }
     }
-        
+
     &__clearButton {
-        transition: 
-            filter 100ms ease-in-out,
-            color 100ms ease-in-out;
+        transition: filter 100ms ease-in-out, color 100ms ease-in-out;
 
         &:hover {
             color: $red_1;

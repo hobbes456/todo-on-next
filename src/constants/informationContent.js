@@ -1,5 +1,5 @@
 export const informationContent = [
-    {   
+    {
         id: 1,
         isLink: false,
         text: "Double-click to edit a todo",
@@ -16,7 +16,7 @@ export const informationContent = [
         isLink: true,
         text: "Special for ",
         linkText: "S&P",
-        href: "https://snp.agency/ru"
+        href: "https://snp.agency/ru",
     },
     {
         id: 4,

@@ -5,7 +5,7 @@ import filtersReducer from "./filtersSlice";
 
 const rootReducer = combineReducers({
     todos: todosReducer,
-    filters: filtersReducer
+    filters: filtersReducer,
 });
 
 export default rootReducer;
