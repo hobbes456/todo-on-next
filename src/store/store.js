@@ -1,9 +1,16 @@
-import { createStore } from "redux";
+import { configureStore } from "@reduxjs/toolkit";
 
-import rootReducer from "@/reducers/reducer";
+import todosReducer from "@/reducers/todosSlice";
+import filtersReducer from "@/reducers/filtersSlice";
 import { loadFromLocalStorage, saveToLocalStorage } from "./localStorage";
 
-const store = createStore(rootReducer, loadFromLocalStorage());
+const store = configureStore({
+    reducer: {
+        todos: todosReducer,
+        filters: filtersReducer,
+    },
+    preloadedState: loadFromLocalStorage(),
+});
 
 store.subscribe(() => saveToLocalStorage(store.getState()));
 
