@@ -2,7 +2,7 @@ export const saveToLocalStorage = (state) => {
     try {
         const serialisedState = JSON.stringify(state);
 
-        localStorage.setItem("persistantState", serialisedState);
+        localStorage.setItem("oldState", serialisedState);
     } catch (error) {
         console.warn(error);
     }
@@ -10,7 +10,7 @@ export const saveToLocalStorage = (state) => {
 
 export const loadFromLocalStorage = () => {
     try {
-        const serialisedState = localStorage.getItem("persistantState");
+        const serialisedState = localStorage.getItem("oldState");
 
         if (serialisedState === null) return undefined;
 
