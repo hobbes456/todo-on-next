@@ -9,7 +9,7 @@ import { buttonsContent } from "@/constants/buttonsContent";
 import s from "./Footer.module.scss";
 
 const Footer = () => {
-    const todos = useSelector((state) => state.todos);
+    const todos = useSelector((state) => state.todos.entities);
     const status = useSelector((state) => state.filters.status);
     const dispatch = useDispatch();
 

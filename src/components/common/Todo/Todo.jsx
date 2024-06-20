@@ -4,14 +4,14 @@ import { useSelector, useDispatch } from "react-redux";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import Item from "@/components/common/Item";
-import { selectedFiltersTodos, todoAllCompleted } from "@/reducers/todosSlice";
+import { selectedFilteredTodos, todoAllCompleted } from "@/reducers/todosSlice";
 
 import s from "./Todo.module.scss";
 
 const Todo = () => {
     const [showContent, setShowContent] = useState(false);
-    const todos = useSelector((state) => state.todos);
-    const selectedTodos = useSelector((state) => selectedFiltersTodos(state));
+    const todos = useSelector((state) => state.todos.entities);
+    const selectedTodos = useSelector((state) => selectedFilteredTodos(state));
     const dispatch = useDispatch();
 
     const handleChange = () => dispatch(todoAllCompleted());

@@ -1,15 +1,19 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import todosReducer from "@/reducers/todosSlice";
-import filtersReducer from "@/reducers/filtersSlice";
+import todosSlice from "@/reducers/todosSlice";
+import filtersSlice from "@/reducers/filtersSlice";
 import { loadFromLocalStorage, saveToLocalStorage } from "./localStorage";
 
 const store = configureStore({
     reducer: {
-        todos: todosReducer,
-        filters: filtersReducer,
+        todos: todosSlice,
+        filters: filtersSlice,
     },
     preloadedState: loadFromLocalStorage(),
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: false,
+        }),
 });
 
 store.subscribe(() => saveToLocalStorage(store.getState()));
