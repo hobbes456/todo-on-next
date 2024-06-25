@@ -50,10 +50,8 @@ const Todo = () => {
                     type="checkbox"
                     onClick={handleToggleAll}
                 />
-                {showContent ? (
+                {showContent && (
                     <label className={s.todo__toggleAll} htmlFor="toggleAll" />
-                ) : (
-                    <></>
                 )}
                 <ul className={s.todo__itemsList}>
                     {filteredTodos.map((item) => (

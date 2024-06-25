@@ -31,10 +31,9 @@ const Footer = () => {
                 {buttonsContent.map((item) => (
                     <Link
                         key={item.id}
-                        className={clsx(
-                            s.footer__link,
-                            {[s.footer__link_active] : item.text === filter}
-                        )}
+                        className={clsx(s.footer__link, {
+                            [s.footer__link_active]: item.text === filter,
+                        })}
                         href={item.href}
                         onClick={() => handleClick(item)}
                     >
