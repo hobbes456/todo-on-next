@@ -30,7 +30,7 @@ const ItemTemplate = ({ item, onDoubleClick }) => {
         <div
             className={clsx(
                 s.itemTemplate,
-                item.isCompleted && s.itemTemplate_completed
+                {[s.itemTemplate_completed]: item.isCompleted}
             )}
         >
             <input

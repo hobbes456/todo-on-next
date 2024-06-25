@@ -33,7 +33,7 @@ const Footer = () => {
                         key={item.id}
                         className={clsx(
                             s.footer__link,
-                            item.text === filter && s.footer__link_active
+                            {[s.footer__link_active] : item.text === filter}
                         )}
                         href={item.href}
                         onClick={() => handleClick(item)}
