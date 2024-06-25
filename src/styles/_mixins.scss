@@ -42,7 +42,7 @@
 }
 
 @mixin p-small-font {
-    @include roboto-medium();
+    @include roboto-medium;
     font-size: 10px;
     font-weight: 200;
     line-height: 142%;
