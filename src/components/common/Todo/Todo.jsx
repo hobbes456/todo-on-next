@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from "react";
 
-import Header from "@/components/common/Header";
-import Footer from "@/components/common/Footer";
-import Item from "@/components/common/Item";
+import Header from "components/Header";
+import Footer from "components/Footer";
+import Item from "components/Item";
 import { StoreContext } from "@/contexts/StoreProvider";
 
 import s from "./Todo.module.scss";

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 
-import AppLoader from "@/components/common/AppLoader";
-import Todo from "@/components/common/Todo";
-import Information from "@/components/common/Information";
+import AppLoader from "components/AppLoader";
+import Todo from "components/Todo";
+import Information from "components/Information";
 
 import s from "./AppMain.module.scss";
 
