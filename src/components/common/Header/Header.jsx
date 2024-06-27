@@ -16,7 +16,7 @@ const Header = () => {
 
         setStoreData((prev) => ({
             ...prev,
-            todos: [...storeData.todos, new Item(value)],
+            todos: [new Item(value), ...storeData.todos],
         }));
     };
 
