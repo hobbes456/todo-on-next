@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useMemo } from "react";
 
 import Header from "components/Header";
 import Footer from "components/Footer";
@@ -21,8 +21,9 @@ const Todo = () => {
         );
     };
 
-    const [filteredTodos, setFilteredTodos] = useState(
-        itemsByFilter(todos, filter)
+    const filteredTodos = useMemo(
+        () => itemsByFilter(todos, filter),
+        [todos, filter]
     );
 
     const handleToggleAll = () => {
@@ -36,10 +37,6 @@ const Todo = () => {
     useEffect(() => {
         setShowContent(todos.length > 0 ? true : false);
     }, [todos]);
-
-    useEffect(() => {
-        setFilteredTodos(itemsByFilter(todos, filter));
-    }, [todos, filter]);
 
     return (
         <div className={s.todo}>
