@@ -9,8 +9,8 @@ const __dirname = path.dirname(__filename);
 const nextConfig = {
     reactStrictMode: true,
     sassOptions: {
-        includePaths: [path.join(__dirname, "src", "styles")],
-        prependData: `@use "styles/_helpers.scss" as *;`,
+        includePaths: [path.join(__dirname, "src")],
+        prependData: `@use "src/styles/_helpers.scss" as *;`,
     },
 };
 
