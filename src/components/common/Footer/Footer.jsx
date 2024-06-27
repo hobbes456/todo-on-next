@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import Link from "next/link";
 import clsx from "clsx";
 
 import { StoreContext } from "@/contexts/StoreProvider";
@@ -29,25 +28,23 @@ const Footer = () => {
             <p>{`${activeCount} ${itemWord} left`}</p>
             <div className={s.footer__buttons}>
                 {buttonsContent.map((item) => (
-                    <Link
+                    <button
                         key={item.id}
-                        className={clsx(s.footer__link, {
-                            [s.footer__link_active]: item.text === filter,
+                        className={clsx(s.footer__button, {
+                            [s.footer__button_active]: item.text === filter,
                         })}
-                        href={item.href}
                         onClick={() => handleClick(item)}
                     >
                         {item.text}
-                    </Link>
+                    </button>
                 ))}
             </div>
-            <Link
+            <button
                 className={s.footer__clearButton}
-                href="#delete-btn"
                 onClick={handleAllCompletedDelete}
             >
                 Clear Completed
-            </Link>
+            </button>
         </div>
     );
 };
