@@ -14,10 +14,9 @@ const ItemTemplate = ({ item, onDoubleClick }) => {
 
     return (
         <div
-            className={clsx(
-                s.itemTemplate,
-                item.isCompleted && s.itemTemplate_completed
-            )}
+            className={clsx(s.itemTemplate, {
+                [s.itemTemplate_completed]: item.isCompleted,
+            })}
         >
             <input
                 id={item.id}
