@@ -25,10 +25,8 @@ const Todo = () => {
             <Header />
             <div className={s.todo__content}>
                 <input id="toggleAll" type="checkbox" onChange={handleChange} />
-                {showContent ? (
+                {showContent && (
                     <label className={s.todo__toggleAll} htmlFor="toggleAll" />
-                ) : (
-                    <></>
                 )}
                 <ul className={s.todo__itemsList}>
                     {selectedTodos.map((item) => (
@@ -36,7 +34,7 @@ const Todo = () => {
                     ))}
                 </ul>
             </div>
-            {showContent ? <Footer /> : <></>}
+            {showContent && <Footer />}
         </div>
     );
 };
