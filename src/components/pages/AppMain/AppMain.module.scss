@@ -6,7 +6,7 @@
     flex-direction: column;
     align-items: center;
 
-    @include _550 {
+    @include v550 {
         padding: 0 5px;
     }
 }

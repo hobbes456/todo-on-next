@@ -1,10 +1,4 @@
-@mixin _1024 {
-    @media screen and (max-width: $viewport1024) {
-        @content;
-    }
-}
-
-@mixin _550 {
+@mixin v550 {
     @media screen and (max-width: $viewport550) {
         @content;
     }
@@ -27,7 +21,7 @@
     @include roboto-medium;
     font-size: 24px;
     font-weight: 300;
-    line-height: 122%;
+    line-height: 1.22;
     word-wrap: break-word;
     word-break: break-all;
 }
@@ -36,16 +30,16 @@
     @include roboto-medium;
     font-size: 14px;
     font-weight: 300;
-    line-height: 142%;
+    line-height: 1.42;
     word-wrap: break-word;
     word-break: break-all;
 }
 
 @mixin p-small-font {
-    @include roboto-medium();
+    @include roboto-medium;
     font-size: 10px;
     font-weight: 200;
-    line-height: 142%;
+    line-height: 1.42;
     word-wrap: break-word;
 }
 

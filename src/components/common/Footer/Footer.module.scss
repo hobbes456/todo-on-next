@@ -30,7 +30,7 @@
         
         transition: color 100ms ease-in-out, outline-color 100ms ease-in-out;
         
-        @include _550 {
+        @include v550 {
             margin: 0 3px;
             padding: 0;
         }
