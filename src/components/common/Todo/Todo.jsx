@@ -56,7 +56,7 @@ const Todo = () => {
                     ))}
                 </ul>
             </div>
-            {showContent ? <Footer /> : <></>}
+            {showContent && <Footer />}
         </div>
     );
 };
