@@ -28,8 +28,8 @@ const Footer = () => {
                 {buttonsContent.map((item) => (
                     <button
                         key={item.id}
-                        className={clsx(s.footer__link, {
-                            [s.footer__link_active]: status === item.text,
+                        className={clsx(s.footer__button, {
+                            [s.footer__button_active]: status === item.text,
                         })}
                         onClick={handleLinkClick}
                     >

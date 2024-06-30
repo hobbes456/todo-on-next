@@ -68,7 +68,9 @@ export const selectedFiltersTodos = createSelector(
         }
 
         return todos.filter((todo) =>
-            status === filtersSettings.active ? !todo.isCompleted : todo.isCompleted
+            status === filtersSettings.active
+                ? !todo.isCompleted
+                : todo.isCompleted
         );
     }
 );
