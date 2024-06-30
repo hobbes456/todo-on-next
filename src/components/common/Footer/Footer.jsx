@@ -1,5 +1,4 @@
 import { useSelector, useDispatch } from "react-redux";
-import Link from "next/link";
 import clsx from "clsx";
 
 import { todoClearCompleted } from "@/reducers/todosSlice";
