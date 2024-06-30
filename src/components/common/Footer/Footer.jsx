@@ -26,26 +26,24 @@ const Footer = () => {
             <p>{`${activeCount} ${itemWord} left`}</p>
             <div className={s.footer__buttons}>
                 {buttonsContent.map((item) => (
-                    <Link
+                    <button
                         key={item.id}
                         className={clsx(
-                            s.footer__link,
-                            status === item.text && s.footer__link_active
+                            s.footer__button,
+                            status === item.text && s.footer__button_active
                         )}
-                        href={item.href}
                         onClick={handleLinkClick}
                     >
                         {item.text}
-                    </Link>
+                    </button>
                 ))}
             </div>
-            <Link
+            <button
                 className={s.footer__clearButton}
-                href="#delete-btn"
                 onClick={handleDeleteButton}
             >
                 Clear Completed
-            </Link>
+            </button>
         </div>
     );
 };
