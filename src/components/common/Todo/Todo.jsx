@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import Header from "@/components/common/Header";
-import Footer from "@/components/common/Footer";
-import Item from "@/components/common/Item";
+import Header from "@components/Header";
+import Footer from "@components/Footer";
+import Item from "@components/Item";
 import { selectedFilteredTodos, todoAllCompleted } from "@/reducers/todosSlice";
 
 import s from "./Todo.module.scss";
