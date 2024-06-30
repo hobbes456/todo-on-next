@@ -16,7 +16,7 @@ const initialState = [];
 const todosReducer = (state = initialState, action) => {
     switch (action.type) {
         case TODO_ADD: {
-            return [...state, new Item(state, action.payload)];
+            return [new Item(state, action.payload), ...state];
         }
 
         case TODO_DELETED: {
