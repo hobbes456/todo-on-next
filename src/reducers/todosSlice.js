@@ -9,7 +9,7 @@ import {
     TODO_ALL_COMPLETED,
     TODO_CLEAR_COMPLETED,
 } from "@/constants/actions";
-import { ALL, ACTIVE } from "@/constants/filtersSettings";
+import { filtersSettings } from "@/constants/filtersSettings";
 
 const initialState = [];
 
@@ -63,12 +63,12 @@ export const selectedFiltersTodos = createSelector(
     (state) => state.todos,
     (state) => state.filters.status,
     (todos, status) => {
-        if (status === ALL) {
+        if (status === filtersSettings.all) {
             return todos;
         }
 
         return todos.filter((todo) =>
-            status === ACTIVE ? !todo.isCompleted : todo.isCompleted
+            status === filtersSettings.active ? !todo.isCompleted : todo.isCompleted
         );
     }
 );
