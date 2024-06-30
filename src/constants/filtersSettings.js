@@ -1,3 +1,5 @@
-export const ALL = "All";
-export const ACTIVE = "Active";
-export const COMPLETED = "Completed";
+export const filtersSettings = {
+    active: "Active",
+    all: "All",
+    completed: "Completed",
+};

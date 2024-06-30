@@ -1,7 +1,7 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
 
 import { Item } from "@/constants/Item";
-import { ALL, ACTIVE } from "@/constants/filtersSettings";
+import { filtersSettings } from "@/constants/filtersSettings";
 
 const initialState = {
     entities: [],
@@ -60,10 +60,10 @@ export const selectedFilteredTodos = createSelector(
     (state) => state.todos.entities,
     (state) => state.filters.status,
     (entities, status) => {
-        if (status === ALL) return entities;
+        if (status === filtersSettings.all) return entities;
 
         return entities.filter((item) =>
-            status === ACTIVE ? !item.isCompleted : item.isCompleted
+            status === filtersSettings.active ? !item.isCompleted : item.isCompleted
         );
     }
 );
