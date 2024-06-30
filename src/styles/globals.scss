@@ -1,5 +1,4 @@
 @import "./css-reset";
-@import "./variables";
 
 html {
     scroll-behavior: smooth;
@@ -8,14 +7,6 @@ html {
 
 body {
     background-color: $main;
-
-    transition: background-color 1000ms ease-in-out;
-
-    &.ufo-active {
-        background-color: $ufo_bg_color;
-
-        filter: drop-shadow(0 0 10px $white);
-    }
 }
 
 a {
@@ -23,7 +14,7 @@ a {
     text-decoration: none;
 }
 
-input {
+input, button {
     outline: none;
     border: none;
     background: inherit;

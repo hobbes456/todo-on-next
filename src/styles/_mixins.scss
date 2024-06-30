@@ -1,10 +1,4 @@
-@mixin _1024 {
-    @media screen and (max-width: $viewport1024) {
-        @content;
-    }
-}
-
-@mixin _550 {
+@mixin v550 {
     @media screen and (max-width: $viewport550) {
         @content;
     }
@@ -42,7 +36,7 @@
 }
 
 @mixin p-small-font {
-    @include roboto-medium();
+    @include roboto-medium;
     font-size: 10px;
     font-weight: 200;
     line-height: 142%;

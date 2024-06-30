@@ -1,6 +1,3 @@
-@import "@/styles/_variables.scss";
-@import "@/styles/_mixins.scss";
-
 .footer {
     display: flex;
     justify-content: space-around;
@@ -30,7 +27,7 @@
         
         transition: color 100ms ease-in-out, outline-color 100ms ease-in-out;
         
-        @include _550 {
+        @include v550 {
             margin: 0 3px;
             padding: 0;
         }
