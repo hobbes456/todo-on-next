@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "@/hooks/hooks";
 
 import Header from "@components/Header";
 import Footer from "@components/Footer";
@@ -10,9 +10,9 @@ import s from "./Todo.module.scss";
 
 const Todo = () => {
     const [showContent, setShowContent] = useState(false);
-    const todos = useSelector((state) => state.todos.entities);
-    const selectedTodos = useSelector((state) => selectedFilteredTodos(state));
-    const dispatch = useDispatch();
+    const todos = useAppSelector((state) => state.todos.entities);
+    const selectedTodos = useAppSelector((state) => selectedFilteredTodos(state));
+    const dispatch = useAppDispatch();
 
     const handleChange = () => dispatch(todoAllCompleted());
 

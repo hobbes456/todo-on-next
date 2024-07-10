@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "@/hooks/hooks";
 import clsx from "clsx";
 
 import { todoDeleted, todoToggled } from "@/reducers/todosSlice";
@@ -6,7 +6,7 @@ import { todoDeleted, todoToggled } from "@/reducers/todosSlice";
 import s from "./ItemTemplate.module.scss";
 
 const ItemTemplate = ({ item, onDoubleClick }) => {
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const handleDeleted = () => dispatch(todoDeleted(item.id));
 

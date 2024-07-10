@@ -1,8 +1,12 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { filtersSettings } from "@/constants/filtersSettings";
 
-const initialState = {
+export interface initialStateFiltersProps {
+    status: string;
+}
+
+const initialState: initialStateFiltersProps = {
     status: filtersSettings.all,
 };
 
@@ -10,7 +14,7 @@ const filtersSlice = createSlice({
     name: "filters",
     initialState,
     reducers: {
-        filterChanged(state, action) {
+        filterChanged(state, action: PayloadAction<string>) {
             state.status = action.payload;
         },
     },

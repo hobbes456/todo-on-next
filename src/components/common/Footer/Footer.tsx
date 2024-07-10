@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "@/hooks/hooks";
 import clsx from "clsx";
 
 import { todoClearCompleted } from "@/reducers/todosSlice";
@@ -8,9 +8,9 @@ import { buttonsContent } from "@/constants/buttonsContent";
 import s from "./Footer.module.scss";
 
 const Footer = () => {
-    const todos = useSelector((state) => state.todos.entities);
-    const status = useSelector((state) => state.filters.status);
-    const dispatch = useDispatch();
+    const todos = useAppSelector((state) => state.todos.entities);
+    const status = useAppSelector((state) => state.filters.status);
+    const dispatch = useAppDispatch();
 
     const activeCount = todos.filter((item) => !item.isCompleted).length;
     const itemWord = activeCount === 1 ? "item" : "items";

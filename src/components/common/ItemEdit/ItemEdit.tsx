@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "@/hooks/hooks";
 
 import { todoDeleted, todoEdited } from "@/reducers/todosSlice";
 import { EditedItem } from "@/constants/editedItem";
@@ -9,7 +9,7 @@ import s from "./ItemEdit.module.scss";
 const ItemEdit = ({ item, onBlur }) => {
     const [inputValue, setInputValue] = useState(item.value);
     const inputRef = useRef(null);
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const handleChange = (event) => setInputValue(event.target.value);
 

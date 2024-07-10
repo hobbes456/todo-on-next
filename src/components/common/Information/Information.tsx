@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { informationContent } from "@/constants/informationContent";
+import { informationContent } from "@/constants/informationContent.ts";
 
 import s from "./Information.module.scss";
 

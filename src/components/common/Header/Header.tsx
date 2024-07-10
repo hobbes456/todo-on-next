@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "@/hooks/hooks";
 
 import { todoAdded } from "@/reducers/todosSlice";
 
@@ -7,7 +7,7 @@ import s from "./Header.module.scss";
 
 const Header = () => {
     const [inputValue, setValueInput] = useState("");
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     const handleChange = (event) => setValueInput(event.target.value);
 

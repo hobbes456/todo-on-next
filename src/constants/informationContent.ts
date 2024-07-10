@@ -1,4 +1,12 @@
-export const informationContent = [
+interface InformationContentProps {
+    id: number;
+    isLink: boolean;
+    text: string;
+    linkText?: string;
+    href?: string;
+}
+
+export const informationContent: Array<InformationContentProps> = [
     {
         id: 1,
         isLink: false,
