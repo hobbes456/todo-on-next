@@ -16,8 +16,7 @@ const todosSlice = createSlice({
     name: "todos",
     initialState,
     reducers: {
-        todoAdded(state, action: PayloadAction<string>) {
-            console.log(new Item(state.entities, action.payload));
+        addTodo(state, action: PayloadAction<string>) {
             state.entities.unshift(new Item(state.entities, action.payload));
         },
         todoDeleted(state, action: PayloadAction<number>) {
@@ -54,7 +53,7 @@ const todosSlice = createSlice({
 });
 
 export const {
-    todoAdded,
+    addTodo,
     todoDeleted,
     todoEdited,
     todoToggled,

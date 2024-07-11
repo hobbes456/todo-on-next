@@ -1,3 +1,4 @@
+import React from "react";
 import s from "./AppLoader.module.scss";
 
 const AppLoader = () => {

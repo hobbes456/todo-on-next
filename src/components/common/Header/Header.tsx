@@ -1,7 +1,8 @@
+import React from "react";
 import { useState } from "react";
 import { useAppDispatch } from "@/hooks/hooks";
 
-import { todoAdded } from "@/reducers/todosSlice";
+import { addTodo } from "@/reducers/todosSlice";
 
 import s from "./Header.module.scss";
 
@@ -16,7 +17,7 @@ const Header = () => {
 
         if (inputValue.trim() === "") return;
 
-        dispatch(todoAdded(inputValue));
+        dispatch(addTodo(inputValue));
 
         setValueInput("");
     };

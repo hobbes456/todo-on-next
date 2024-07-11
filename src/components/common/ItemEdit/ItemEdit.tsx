@@ -1,12 +1,19 @@
+import React from "react";
 import { useState, useEffect, useRef } from "react";
 import { useAppDispatch } from "@/hooks/hooks";
 
 import { todoDeleted, todoEdited } from "@/reducers/todosSlice";
 import { EditedItem } from "@/constants/editedItem";
+import { IItem } from "@/models/IItem";
 
 import s from "./ItemEdit.module.scss";
 
-const ItemEdit = ({ item, onBlur }) => {
+interface ItemEditProps {
+    item: IItem;
+    onBlur: () => void;
+}
+
+const ItemEdit = ({ item, onBlur }: ItemEditProps) => {
     const [inputValue, setInputValue] = useState(item.value);
     const inputRef = useRef(null);
     const dispatch = useAppDispatch();
