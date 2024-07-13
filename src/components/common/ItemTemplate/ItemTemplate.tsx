@@ -7,12 +7,12 @@ import { IItem } from "@/models/IItem";
 
 import s from "./ItemTemplate.module.scss";
 
-interface ItemTemplateProps {
+type ItemTemplateProps = {
     item: IItem;
     onDoubleClick: () => void;
 }
 
-const ItemTemplate = ({ item, onDoubleClick }: ItemTemplateProps) => {
+const ItemTemplate: React.FC<ItemTemplateProps> = ({ item, onDoubleClick }) => {
     const dispatch = useAppDispatch();
 
     const handleDeleted = () => dispatch(todoDeleted(item.id));

@@ -4,11 +4,11 @@ import ItemTemplate from "@components/ItemTemplate";
 import ItemEdit from "@components/ItemEdit";
 import { IItem } from "@/models/IItem";
 
-interface ItemProps {
+type ItemProps = {
     item: IItem;
 }
 
-const Item = ({ item }: ItemProps) => {
+const Item: React.FC<ItemProps> = ({ item }) => {
     const [isEdit, setIsEdit] = useState(false);
 
     const handleEdit = () => setIsEdit((prev) => !prev);

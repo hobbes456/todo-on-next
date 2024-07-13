@@ -8,12 +8,12 @@ import { IItem } from "@/models/IItem";
 
 import s from "./ItemEdit.module.scss";
 
-interface ItemEditProps {
+type ItemEditProps = {
     item: IItem;
     onBlur: () => void;
 }
 
-const ItemEdit = ({ item, onBlur }: ItemEditProps) => {
+const ItemEdit: React.FC<ItemEditProps> = ({ item, onBlur }) => {
     const [inputValue, setInputValue] = useState(item.value);
     const inputRef = useRef(null);
     const dispatch = useAppDispatch();
