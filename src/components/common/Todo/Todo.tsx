@@ -4,7 +4,7 @@ import { useAppSelector, useAppDispatch } from "@/hooks/hooks";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
 import Item from "@components/Item";
-import { selectedFilteredTodos, todoAllCompleted } from "@/reducers/todosSlice";
+import { selectedFilteredTodos, completeAllTodos } from "@/reducers/todosSlice";
 
 import s from "./Todo.module.scss";
 
@@ -14,7 +14,7 @@ const Todo = () => {
     const selectedTodos = useAppSelector((state) => selectedFilteredTodos(state));
     const dispatch = useAppDispatch();
 
-    const handleChange = () => dispatch(todoAllCompleted());
+    const handleChange = () => dispatch(completeAllTodos());
 
     useEffect(() => {
         setShowContent(todos.length > 0 ? true : false);

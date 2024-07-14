@@ -2,7 +2,7 @@ import React from "react";
 import { useAppDispatch } from "@/hooks/hooks";
 import clsx from "clsx";
 
-import { todoDeleted, todoToggled } from "@/reducers/todosSlice";
+import { removeTodo, toggleTodo } from "@/reducers/todosSlice";
 import { IItem } from "@/models/IItem";
 
 import s from "./ItemTemplate.module.scss";
@@ -15,9 +15,9 @@ type ItemTemplateProps = {
 const ItemTemplate: React.FC<ItemTemplateProps> = ({ item, onDoubleClick }) => {
     const dispatch = useAppDispatch();
 
-    const handleDeleted = () => dispatch(todoDeleted(item.id));
+    const handleDeleted = () => dispatch(removeTodo(item.id));
 
-    const handleChange = () => dispatch(todoToggled(item.id));
+    const handleChange = () => dispatch(toggleTodo(item.id));
 
     return (
         <div

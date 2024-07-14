@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect, useRef } from "react";
 import { useAppDispatch } from "@/hooks/hooks";
 
-import { todoDeleted, todoEdited } from "@/reducers/todosSlice";
+import { removeTodo, editTodo } from "@/reducers/todosSlice";
 import { EditedItem } from "@/constants/editedItem";
 import { IItem } from "@/models/IItem";
 
@@ -23,9 +23,9 @@ const ItemEdit: React.FC<ItemEditProps> = ({ item, onBlur }) => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        if (inputValue.trim() === "") dispatch(todoDeleted(item.id));
+        if (inputValue.trim() === "") dispatch(removeTodo(item.id));
 
-        dispatch(todoEdited(new EditedItem(item.id, inputValue)));
+        dispatch(editTodo(new EditedItem(item.id, inputValue)));
 
         inputRef.current.blur();
     };

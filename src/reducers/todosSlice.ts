@@ -19,32 +19,32 @@ const todosSlice = createSlice({
         addTodo(state, action: PayloadAction<string>) {
             state.entities.unshift(new Item(state.entities, action.payload));
         },
-        todoDeleted(state, action: PayloadAction<number>) {
+        removeTodo(state, action: PayloadAction<number>) {
             state.entities = state.entities.filter(
                 (item) => item.id !== action.payload
             );
         },
-        todoEdited(state, action: PayloadAction<EditedItem>) {
+        editTodo(state, action: PayloadAction<EditedItem>) {
             state.entities = state.entities.map((item) =>
                 item.id !== action.payload.id
                     ? item
                     : { ...item, value: action.payload.value }
             );
         },
-        todoToggled(state, action: PayloadAction<number>) {
+        toggleTodo(state, action: PayloadAction<number>) {
             state.entities = state.entities.map((item) =>
                 item.id === action.payload
                     ? { ...item, isCompleted: !item.isCompleted }
                     : item
             );
         },
-        todoAllCompleted(state) {
+        completeAllTodos(state) {
             state.entities = state.entities.map((item) => ({
                 ...item,
                 isCompleted: true,
             }));
         },
-        todoClearCompleted(state) {
+        clearCompletedTodos(state) {
             state.entities = state.entities.filter(
                 (item) => item.isCompleted === false
             );
@@ -54,11 +54,11 @@ const todosSlice = createSlice({
 
 export const {
     addTodo,
-    todoDeleted,
-    todoEdited,
-    todoToggled,
-    todoClearCompleted,
-    todoAllCompleted,
+    removeTodo,
+    editTodo,
+    toggleTodo,
+    clearCompletedTodos,
+    completeAllTodos,
 } = todosSlice.actions;
 
 export const selectedFilteredTodos = createSelector(

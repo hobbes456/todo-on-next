@@ -2,7 +2,7 @@ import React from "react";
 import { useAppSelector, useAppDispatch } from "@/hooks/hooks";
 import clsx from "clsx";
 
-import { todoClearCompleted } from "@/reducers/todosSlice";
+import { clearCompletedTodos } from "@/reducers/todosSlice";
 import { filterChanged } from "@/reducers/filtersSlice";
 import { buttonsContent } from "@/constants/buttonsContent";
 
@@ -19,7 +19,7 @@ const Footer = () => {
     const handleLinkClick = (event) =>
         dispatch(filterChanged(event.target.textContent));
 
-    const handleDeleteButton = () => dispatch(todoClearCompleted());
+    const handleDeleteButton = () => dispatch(clearCompletedTodos());
 
     return (
         <div className={s.footer}>
