@@ -3,7 +3,7 @@ import { useAppSelector, useAppDispatch } from "@/hooks/hooks";
 import clsx from "clsx";
 
 import { clearCompletedTodos } from "@/reducers/todosSlice";
-import { filterChanged } from "@/reducers/filtersSlice";
+import { changeFilter } from "@/reducers/filtersSlice";
 import { buttonsContent } from "@/constants/buttonsContent";
 
 import s from "./Footer.module.scss";
@@ -17,7 +17,7 @@ const Footer = () => {
     const itemWord = activeCount === 1 ? "item" : "items";
 
     const handleLinkClick = (event) =>
-        dispatch(filterChanged(event.target.textContent));
+        dispatch(changeFilter(event.target.textContent));
 
     const handleDeleteButton = () => dispatch(clearCompletedTodos());
 
