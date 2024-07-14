@@ -1,10 +1,11 @@
-import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { Item } from "@/constants/Item";
-import { filtersSettings } from "@/constants/filtersSettings";
 import { EditedItem } from "@/constants/editedItem";
 
-export interface initialStateTodosProps {
+export * as todosSelectors from "./selectors";
+
+interface initialStateTodosProps {
     entities: Array<any>;
 }
 
@@ -60,19 +61,5 @@ export const {
     clearCompletedTodos,
     completeAllTodos,
 } = todosSlice.actions;
-
-export const selectedFilteredTodos = createSelector(
-    (state) => state.todos.entities,
-    (state) => state.filters.status,
-    (entities, status) => {
-        if (status === filtersSettings.all) return entities;
-
-        return entities.filter((item) =>
-            status === filtersSettings.active
-                ? !item.isCompleted
-                : item.isCompleted
-        );
-    }
-);
 
 export default todosSlice.reducer;

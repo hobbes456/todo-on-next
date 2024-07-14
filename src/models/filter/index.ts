@@ -2,7 +2,9 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { filtersSettings } from "@/constants/filtersSettings";
 
-export interface initialStateFiltersProps {
+export * as filtersSelectors from "./selectors";
+
+interface initialStateFiltersProps {
     status: string;
 }
 

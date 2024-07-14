@@ -1,4 +1,6 @@
-export const saveToLocalStorage = (state) => {
+import { RootState } from "./store";
+
+export const saveToLocalStorage = (state: RootState): void => {
     try {
         const serialisedState = JSON.stringify(state);
 
@@ -8,7 +10,7 @@ export const saveToLocalStorage = (state) => {
     }
 };
 
-export const loadFromLocalStorage = () => {
+export const loadFromLocalStorage = (): RootState | undefined => {
     try {
         const serialisedState = localStorage.getItem("oldState");
 

@@ -1,23 +1,21 @@
 import React from "react";
-import { useAppDispatch } from "@/hooks/hooks";
 import clsx from "clsx";
 
-import { removeTodo, toggleTodo } from "@/reducers/todosSlice";
-import { IItem } from "@/models/IItem";
+import { useAction } from "@/hooks/hooks";
+import { removeTodo, toggleTodo } from "@/models/todo";
+import { IItem } from "@/interfaces/IItem";
 
 import s from "./ItemTemplate.module.scss";
 
 type ItemTemplateProps = {
     item: IItem;
     onDoubleClick: () => void;
-}
+};
 
 const ItemTemplate: React.FC<ItemTemplateProps> = ({ item, onDoubleClick }) => {
-    const dispatch = useAppDispatch();
+    const handleDeleted = useAction(removeTodo);
 
-    const handleDeleted = () => dispatch(removeTodo(item.id));
-
-    const handleChange = () => dispatch(toggleTodo(item.id));
+    const handleChange = useAction(toggleTodo);
 
     return (
         <div
@@ -29,7 +27,7 @@ const ItemTemplate: React.FC<ItemTemplateProps> = ({ item, onDoubleClick }) => {
                 id={item.id.toString()}
                 type="checkbox"
                 checked={item.isCompleted}
-                onChange={handleChange}
+                onChange={() => handleChange(item.id)}
             />
             <label
                 className={s.itemTemplate__checkbox}
@@ -41,7 +39,10 @@ const ItemTemplate: React.FC<ItemTemplateProps> = ({ item, onDoubleClick }) => {
             >
                 {item.value}
             </div>
-            <button className={s.itemTemplate__button} onClick={handleDeleted}>
+            <button
+                className={s.itemTemplate__button}
+                onClick={() => handleDeleted(item.id)}
+            >
                 +
             </button>
         </div>

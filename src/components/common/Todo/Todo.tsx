@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { useAppSelector, useAppDispatch } from "@/hooks/hooks";
+import { useAppSelector, useAction } from "@/hooks/hooks";
 
 import Header from "@components/Header";
 import Footer from "@components/Footer";
 import Item from "@components/Item";
-import { selectedFilteredTodos, completeAllTodos } from "@/reducers/todosSlice";
+import { completeAllTodos, todosSelectors } from "@/models/todo";
 
 import s from "./Todo.module.scss";
 
 const Todo = () => {
     const [showContent, setShowContent] = useState(false);
-    const todos = useAppSelector((state) => state.todos.entities);
-    const selectedTodos = useAppSelector((state) => selectedFilteredTodos(state));
-    const dispatch = useAppDispatch();
+    const todos = useAppSelector(todosSelectors.entities);
+    const selectedTodos = useAppSelector(todosSelectors.selectedFilteredTodos);
 
-    const handleChange = () => dispatch(completeAllTodos());
+    const handleChange = useAction(completeAllTodos);
 
     useEffect(() => {
         setShowContent(todos.length > 0 ? true : false);
@@ -24,7 +23,7 @@ const Todo = () => {
         <div className={s.todo}>
             <Header />
             <div className={s.todo__content}>
-                <input id="toggleAll" type="checkbox" onChange={handleChange} />
+                <input id="toggleAll" type="checkbox" onChange={() => handleChange()} />
                 {showContent && (
                     <label className={s.todo__toggleAll} htmlFor="toggleAll" />
                 )}

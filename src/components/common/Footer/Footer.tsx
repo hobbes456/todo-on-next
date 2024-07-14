@@ -1,25 +1,25 @@
 import React from "react";
-import { useAppSelector, useAppDispatch } from "@/hooks/hooks";
 import clsx from "clsx";
 
-import { clearCompletedTodos } from "@/reducers/todosSlice";
-import { changeFilter } from "@/reducers/filtersSlice";
+import { useAppSelector, useAction } from "@/hooks/hooks";
+import { clearCompletedTodos, todosSelectors } from "@/models/todo";
+import { changeFilter, filtersSelectors } from "@/models/filter";
 import { buttonsContent } from "@/constants/buttonsContent";
 
 import s from "./Footer.module.scss";
 
 const Footer = () => {
-    const todos = useAppSelector((state) => state.todos.entities);
-    const status = useAppSelector((state) => state.filters.status);
-    const dispatch = useAppDispatch();
+    const todos = useAppSelector(todosSelectors.entities);
+    const status = useAppSelector(filtersSelectors.status);
+
+    const setFilter = useAction(changeFilter);
 
     const activeCount = todos.filter((item) => !item.isCompleted).length;
     const itemWord = activeCount === 1 ? "item" : "items";
 
-    const handleLinkClick = (event) =>
-        dispatch(changeFilter(event.target.textContent));
+    const handleLinkClick = (event) => setFilter(event.target.textContent);
 
-    const handleDeleteButton = () => dispatch(clearCompletedTodos());
+    const handleDeleteButton = useAction(clearCompletedTodos);
 
     return (
         <div className={s.footer}>
@@ -39,7 +39,7 @@ const Footer = () => {
             </div>
             <button
                 className={s.footer__clearButton}
-                onClick={handleDeleteButton}
+                onClick={() => handleDeleteButton()}
             >
                 Clear Completed
             </button>
