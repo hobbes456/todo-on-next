@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import { PayloadAction } from "@reduxjs/toolkit";
 import { AppDispatch, RootState } from "@/store/store";
 import { useCallback } from "react";
 
