@@ -1,16 +1,13 @@
-import { useDispatch } from "react-redux";
 import clsx from "clsx";
 
+import { useActions } from "@/hooks/useActions";
 import { removeTodo, toggleTodo } from "@todo/actions";
 
 import s from "./ItemTemplate.module.scss";
 
 const ItemTemplate = ({ item, onDoubleClick }) => {
-    const dispatch = useDispatch();
-
-    const handleDeleted = () => dispatch(removeTodo(item.id));
-
-    const handleChange = () => dispatch(toggleTodo(item.id));
+    const handleDelete = useActions(removeTodo);
+    const handleChange = useActions(toggleTodo);
 
     return (
         <div
@@ -22,7 +19,7 @@ const ItemTemplate = ({ item, onDoubleClick }) => {
                 id={item.id}
                 type="checkbox"
                 checked={item.isCompleted}
-                onChange={handleChange}
+                onChange={() => handleChange(item.id)}
             />
             <label className={s.itemTemplate__checkbox} htmlFor={item.id} />
             <div
@@ -31,7 +28,10 @@ const ItemTemplate = ({ item, onDoubleClick }) => {
             >
                 {item.value}
             </div>
-            <button className={s.itemTemplate__button} onClick={handleDeleted}>
+            <button
+                className={s.itemTemplate__button}
+                onClick={() => handleDelete(item.id)}
+            >
                 +
             </button>
         </div>

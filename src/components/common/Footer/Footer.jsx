@@ -1,6 +1,7 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import clsx from "clsx";
 
+import { useActions } from "@/hooks/useActions";
 import { todosSelectors } from "@todo/index";
 import { clearCompleteTodos } from "@todo/actions";
 import { filterSelectors } from "@filter/index";
@@ -12,15 +13,12 @@ import s from "./Footer.module.scss";
 const Footer = () => {
     const todos = useSelector(todosSelectors.todos);
     const status = useSelector(filterSelectors.status);
-    const dispatch = useDispatch();
+
+    const handleFilter = useActions(changeFilterStatus);
+    const handleClear = useActions(clearCompleteTodos);
 
     const activeCount = todos.filter((item) => !item.isCompleted).length;
     const itemWord = activeCount === 1 ? "item" : "items";
-
-    const handleLinkClick = (event) =>
-        dispatch(changeFilterStatus(event.target.textContent));
-
-    const handleDeleteButton = () => dispatch(clearCompleteTodos());
 
     return (
         <div className={s.footer}>
@@ -32,7 +30,7 @@ const Footer = () => {
                         className={clsx(s.footer__button, {
                             [s.footer__button_active]: status === item.text,
                         })}
-                        onClick={handleLinkClick}
+                        onClick={(event) => handleFilter(event.target.textContent)}
                     >
                         {item.text}
                     </button>
@@ -40,7 +38,7 @@ const Footer = () => {
             </div>
             <button
                 className={s.footer__clearButton}
-                onClick={handleDeleteButton}
+                onClick={() => handleClear()}
             >
                 Clear Completed
             </button>

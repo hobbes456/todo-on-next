@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
 
+import { useActions } from "@/hooks/useActions";
 import { removeTodo, editTodo } from "@todo/actions";
 import { EditedItem } from "@/constants/editedItem";
 
@@ -9,16 +9,18 @@ import s from "./ItemEdit.module.scss";
 const ItemEdit = ({ item, onBlur }) => {
     const [inputValue, setInputValue] = useState(item.value);
     const inputRef = useRef(null);
-    const dispatch = useDispatch();
+
+    const editTodos = useActions(editTodo);
+    const deleteTodo = useActions(removeTodo);
 
     const handleChange = (event) => setInputValue(event.target.value);
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        if (inputValue.trim() === "") dispatch(removeTodo(item.id));
+        if (inputValue.trim() === "") deleteTodo(item.id);
 
-        dispatch(editTodo(new EditedItem(item.id, inputValue)));
+        editTodos(new EditedItem(item.id, inputValue));
 
         inputRef.current.blur();
     };

@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 
+import { useActions } from "@/hooks/useActions";
 import { addTodo } from "@todo/actions";
 
 import s from "./Header.module.scss";
 
 const Header = () => {
     const [inputValue, setValueInput] = useState("");
-    const dispatch = useDispatch();
+    const addTodos = useActions(addTodo);
 
     const handleChange = (event) => setValueInput(event.target.value);
 
@@ -16,7 +16,7 @@ const Header = () => {
 
         if (inputValue.trim() === "") return;
 
-        dispatch(addTodo(inputValue));
+        addTodos(inputValue);
 
         setValueInput("");
     };

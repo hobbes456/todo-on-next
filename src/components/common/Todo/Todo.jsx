@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import Header from "@components/Header";
 import Footer from "@components/Footer";
 import Item from "@components/Item";
+import { useActions } from "@/hooks/useActions";
 import { todosSelectors } from "@/models/todo";
 import { selectedFilteredTodos } from "@todo/selectors";
 import { allCompleteTodos } from "@todo/actions";
@@ -14,9 +15,8 @@ const Todo = () => {
     const [showContent, setShowContent] = useState(false);
     const todos = useSelector(todosSelectors.todos);
     const selectedTodos = useSelector((store) => selectedFilteredTodos(store));
-    const dispatch = useDispatch();
 
-    const handleChange = () => dispatch(allCompleteTodos());
+    const handleChange = useActions(allCompleteTodos);
 
     useEffect(() => {
         setShowContent(todos.length > 0 ? true : false);
@@ -26,7 +26,11 @@ const Todo = () => {
         <div className={s.todo}>
             <Header />
             <div className={s.todo__content}>
-                <input id="toggleAll" type="checkbox" onChange={handleChange} />
+                <input
+                    id="toggleAll"
+                    type="checkbox"
+                    onChange={() => handleChange()}
+                />
                 {showContent && (
                     <label className={s.todo__toggleAll} htmlFor="toggleAll" />
                 )}
