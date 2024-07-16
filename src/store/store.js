@@ -1,6 +1,6 @@
 import { createStore } from "redux";
 
-import rootReducer from "@/reducers/reducer";
+import rootReducer from "@/models";
 import { loadFromLocalStorage, saveToLocalStorage } from "./localStorage";
 
 const store = createStore(rootReducer, loadFromLocalStorage());

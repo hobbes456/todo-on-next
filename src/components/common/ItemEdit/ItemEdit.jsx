@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 
-import { todoDeleted, todoEdited } from "@/reducers/todosSlice";
+import { removeTodo, editTodo } from "@todo/actions";
 import { EditedItem } from "@/constants/editedItem";
 
 import s from "./ItemEdit.module.scss";
@@ -16,9 +16,9 @@ const ItemEdit = ({ item, onBlur }) => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        if (inputValue.trim() === "") dispatch(todoDeleted(item.id));
+        if (inputValue.trim() === "") dispatch(removeTodo(item.id));
 
-        dispatch(todoEdited(new EditedItem(item.id, inputValue)));
+        dispatch(editTodo(new EditedItem(item.id, inputValue)));
 
         inputRef.current.blur();
     };

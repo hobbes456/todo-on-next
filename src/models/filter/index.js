@@ -1,5 +1,7 @@
-import { FILTER_STATUS_CHANGED } from "@/constants/actions";
+import { CHANGE_FILTER_STATUS } from "./constants";
 import { filtersSettings } from "@/constants/filtersSettings";
+
+export * as filterSelectors from "./selectors";
 
 const initialState = {
     status: filtersSettings.all,
@@ -7,7 +9,7 @@ const initialState = {
 
 const filtersReducer = (state = initialState, action) => {
     switch (action.type) {
-        case FILTER_STATUS_CHANGED: {
+        case CHANGE_FILTER_STATUS: {
             return {
                 status: action.payload,
             };
@@ -17,10 +19,5 @@ const filtersReducer = (state = initialState, action) => {
             return state;
     }
 };
-
-export const filterChanged = (filter) => ({
-    type: FILTER_STATUS_CHANGED,
-    payload: filter,
-});
 
 export default filtersReducer;

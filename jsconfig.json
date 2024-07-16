@@ -4,6 +4,8 @@
       "@/*": ["./src/*"],
       "@components/*": ["./src/components/common/*"],
       "@pages/*": ["./src/components/pages/*"],
+      "@todo/*": ["./src/models/todo/*"],
+      "@filter/*": ["./src/models/filter/*"],
     }
   }
 }

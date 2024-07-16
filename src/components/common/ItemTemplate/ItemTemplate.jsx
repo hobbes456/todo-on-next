@@ -1,16 +1,16 @@
 import { useDispatch } from "react-redux";
 import clsx from "clsx";
 
-import { todoDeleted, todoToggled } from "@/reducers/todosSlice";
+import { removeTodo, toggleTodo } from "@todo/actions";
 
 import s from "./ItemTemplate.module.scss";
 
 const ItemTemplate = ({ item, onDoubleClick }) => {
     const dispatch = useDispatch();
 
-    const handleDeleted = () => dispatch(todoDeleted(item.id));
+    const handleDeleted = () => dispatch(removeTodo(item.id));
 
-    const handleChange = () => dispatch(todoToggled(item.id));
+    const handleChange = () => dispatch(toggleTodo(item.id));
 
     return (
         <div
