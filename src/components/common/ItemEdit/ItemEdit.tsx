@@ -15,30 +15,30 @@ type ItemEditProps = {
 
 const ItemEdit: React.FC<ItemEditProps> = ({ item, onBlur }) => {
     const [inputValue, setInputValue] = useState(item.value);
-    const inputRef = useRef(null);
+    const inputRef = useRef<HTMLInputElement>(null);
 
-    const handleChange = (event) => setInputValue(event.target.value);
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => setInputValue(event.target.value);
 
     const removeItem = useAction(removeTodo);
     const editItem = useAction(editTodo);
 
-    const handleSubmit = (event) => {
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         if (inputValue.trim() === "") removeItem(item.id);
 
         editItem(new EditedItem(item.id, inputValue));
 
-        inputRef.current.blur();
+        inputRef.current?.blur();
     };
 
-    const handleKeyDown = (event) => {
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key !== "Escape") return;
 
-        inputRef.current.blur();
+        inputRef.current?.blur();
     };
 
-    useEffect(() => inputRef.current.focus());
+    useEffect(() => inputRef.current?.focus());
 
     return (
         <form

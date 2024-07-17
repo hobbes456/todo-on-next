@@ -17,7 +17,8 @@ const Footer = () => {
     const activeCount = todos.filter((item) => !item.isCompleted).length;
     const itemWord = activeCount === 1 ? "item" : "items";
 
-    const handleLinkClick = (event) => setFilter(event.target.textContent);
+    const handleLinkClick = (event: React.MouseEvent<HTMLButtonElement>) =>
+        setFilter(event.target.innerText);
 
     const handleDeleteButton = useAction(clearCompletedTodos);
 

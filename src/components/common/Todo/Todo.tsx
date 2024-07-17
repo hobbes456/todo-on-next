@@ -5,6 +5,7 @@ import Header from "@components/Header";
 import Footer from "@components/Footer";
 import Item from "@components/Item";
 import { completeAllTodos, todosSelectors } from "@/models/todo";
+import { IItem } from "@/interfaces/IItem";
 
 import s from "./Todo.module.scss";
 
@@ -28,7 +29,7 @@ const Todo = () => {
                     <label className={s.todo__toggleAll} htmlFor="toggleAll" />
                 )}
                 <ul className={s.todo__itemsList}>
-                    {selectedTodos.map((item) => (
+                    {selectedTodos.map((item: IItem) => (
                         <Item item={item} key={item.id} />
                     ))}
                 </ul>

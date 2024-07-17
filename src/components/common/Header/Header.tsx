@@ -11,9 +11,10 @@ const Header = () => {
 
     const addItem = useAction(addTodo);
 
-    const handleChange = (event) => setValueInput(event.target.value);
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+        setValueInput(event.target.value);
 
-    const handleSubmit = (event) => {
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         if (inputValue.trim() === "") return;
