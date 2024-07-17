@@ -17,7 +17,8 @@ const ItemEdit: React.FC<ItemEditProps> = ({ item, onBlur }) => {
     const [inputValue, setInputValue] = useState(item.value);
     const inputRef = useRef<HTMLInputElement>(null);
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => setInputValue(event.target.value);
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+        setInputValue(event.target.value);
 
     const removeItem = useAction(removeTodo);
     const editItem = useAction(editTodo);

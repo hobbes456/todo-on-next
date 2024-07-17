@@ -24,7 +24,11 @@ const Todo = () => {
         <div className={s.todo}>
             <Header />
             <div className={s.todo__content}>
-                <input id="toggleAll" type="checkbox" onChange={() => handleChange()} />
+                <input
+                    id="toggleAll"
+                    type="checkbox"
+                    onChange={() => handleChange()}
+                />
                 {showContent && (
                     <label className={s.todo__toggleAll} htmlFor="toggleAll" />
                 )}
